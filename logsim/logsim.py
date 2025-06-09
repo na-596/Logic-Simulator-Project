@@ -82,6 +82,12 @@ def main(arg_list):
             print("Current LANG:", language)
             # Initialise an instance of the gui.Gui() class
             app = wx.App()
+            if language == "es_ES.utf8":
+                locale = wx.Locale(wx.LANGUAGE_SPANISH)
+                locale.AddCatalog("locale")
+            else:
+                locale = wx.Locale(wx.LANGUAGE_ENGLISH_UK)
+                locale.AddCatalog("locale")
             gui = Gui("Logic Simulator", path, names, devices, network,
                       monitors, language)
             gui.Show(True)
