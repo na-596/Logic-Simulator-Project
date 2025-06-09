@@ -517,7 +517,10 @@ class Parser:
         elif error_type == self.NOT_BIT:
             print("Expected a bit (0 or 1)")  # tested
         elif error_type == self.QUALIFIER_PRESENT:
-            print("Did not expect a parameter")  # tested
+            if self.symbol.type == self.scanner.COMMA:
+                print("Expected a comma")
+            else:
+                print("Did not expect a parameter")  # tested
         elif error_type == self.INVALID_RANGE:
             print("Expected number between 1 and 16 inclusive")
         elif error_type == self.INVALID_CONNECTION_SC:
