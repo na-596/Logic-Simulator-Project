@@ -84,15 +84,15 @@ def main(arg_list):
             app = wx.App()
             locale = wx.Locale()
             lang = wx.LANGUAGE_ENGLISH  # Default
-            if language in ["es_ES.utf8", "es_ES.UTF-8", "es_ES"]:
+            if language in ["es_ES.utf8", "es_ES.UTF-8", "es_ES, SPANISH, Spanish, spanish"]:
                 lang = wx.LANGUAGE_SPANISH
-            elif language in ["zh_CN.utf8", "zh_CN.UTF-8", "zh_CN"]:
+            elif language in ["zh_CN.utf8", "zh_CN.UTF-8", "zh_CN, CHINESE, Chinese, chinese"]:
                 lang = wx.LANGUAGE_CHINESE_SIMPLIFIED
-            elif language in ["ta_IN.utf8", "ta_IN.UTF-8", "ta_IN"]:
+            elif language in ["ta_IN.utf8", "ta_IN.UTF-8", "ta_IN, TAMIL, Tamil, tamil"]:
                 lang = wx.LANGUAGE_TAMIL
-            elif language in ["yo_NG.utf8", "yo_NG.UTF-8", "yo_NG"]:
+            elif language in ["yo_NG.utf8", "yo_NG.UTF-8", "yo_NG, YORUBA, Yoruba, yoruba"]:
                 lang = wx.LANGUAGE_YORUBA
-            elif language in ["kn_IN.utf8", "kn_IN.UTF-8", "kn_IN"]:
+            elif language in ["kn_IN.utf8", "kn_IN.UTF-8", "kn_IN, KANNADA, Kannada, kannada"]:
                 lang = wx.LANGUAGE_KANNADA
             # Add more languages as needed
 

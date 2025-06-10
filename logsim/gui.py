@@ -23,49 +23,6 @@ from parse import Parser
 import os
 
 
-HELP_MESSAGE = """
-How to Use the Logic Simulator GUI
-
----
-
-**Keybinds**
-- **F1:** Show this Help window
-- **Alt+F4:** Exit the application
-- **Spacebar:** Run/Pause the simulation
-
-**Simulation Controls**
-- **Number of Cycles:** Set how many cycles to run the simulation for.
-- **▶ Run Simulation:** Start the simulation for the chosen number of cycles.
-- **❚❚ Pause:** Pause the simulation at any time.
-- **■ Reset:** Reset the simulation and clear all monitor data.
-- **Speed:** Click to cycle through simulation speeds (x0.5, x1, x2, x4, x8).
-
-**Switch Controls**
-- Toggle individual switches by clicking the switch in the list.
-- Use **All On** or **All Off** to set all switches high or low.
-
-**Monitors**
-- Add a monitor to track a signal by clicking **Add Monitor** and selecting a signal.
-- Use **Add All** in the dialog to monitor all available signals.
-- Remove a monitor by clicking the ✕ button next to it, or **Zap All** to remove all monitors.
-- The monitor list shows the current state of each monitored signal.
-
-**Signal Display Canvas**
-- The main area shows waveforms for all monitored signals.
-- **Pan:** Click and drag to move the view.
-- **Zoom:** Use the mouse wheel to zoom in/out.
-- Signal colors match the color bars in the monitor list.
-
-**Themes**
-- Switch between Light and Dark mode from the Theme menu.
-
-**Status Bar**
-- The status bar at the bottom shows helpful messages and feedback.
-
-For more help, see the project documentation or contact the authors.
-"""
-
-
 class MyGLCanvas(wxcanvas.GLCanvas):
     """Handle all drawing operations.
 
@@ -886,24 +843,40 @@ class Gui(wx.Frame):
         
         # Add signal color sets for light and dark mode
         self.light_signal_colors = [
-            (0.90, 0.10, 0.10),  # Hard Red (a strong, clear red)
-            (1.00, 0.55, 0.00),  # Hard Orange (a vibrant, classic orange)
-            (0.95, 0.80, 0.10),  # Hard Yellow (a rich, golden yellow, clearly visible)
-            (0.10, 0.65, 0.20),  # Hard Green (a solid, true green)
-            (0.00, 0.60, 0.70),  # Hard Teal/Cyan (a strong, bright blue-green)
-            (0.00, 0.35, 0.85),  # Hard Blue (a bold, definite blue)
-            (0.45, 0.15, 0.70),  # Hard Indigo/Purple (a deep, rich purple)
-            (0.85, 0.05, 0.60),  # Hard Magenta (a vibrant, deep pink/magenta)
+            (0.90, 0.10, 0.10),  
+            # Hard Red (a strong, clear red)
+            (1.00, 0.55, 0.00),  
+            # Hard Orange (a vibrant, classic orange)
+            (0.95, 0.80, 0.10),  
+            # Hard Yellow (a rich, golden yellow, clearly visible)
+            (0.10, 0.65, 0.20),  
+            # Hard Green (a solid, true green)
+            (0.00, 0.60, 0.70),  
+            # Hard Teal/Cyan (a strong, bright blue-green)
+            (0.00, 0.35, 0.85),  
+            # Hard Blue (a bold, definite blue)
+            (0.45, 0.15, 0.70),  
+            # Hard Indigo/Purple (a deep, rich purple)
+            (0.85, 0.05, 0.60),  
+            # Hard Magenta (a vibrant, deep pink/magenta)
         ]
         self.dark_signal_colors = [
-            (1.00, 0.05, 0.65),  # Neon Magenta (a vibrant, hot pink to kick off)
-            (1.00, 0.10, 0.10),  # Neon Red (a bright, intense red)
-            (1.00, 0.50, 0.00),  # Neon Orange (a vivid, fiery orange)
-            (1.00, 1.00, 0.00),  # Neon Yellow (a pure, dazzling yellow)
-            (0.20, 1.00, 0.20),  # Neon Lime Green (an electric, bright green)
-            (0.00, 0.80, 1.00),  # Neon Cyan (a brilliant, striking blue)
-            (0.50, 0.20, 1.00),  # Neon Indigo (a deep, electric blue-purple)
-            (0.80, 0.00, 1.00),  # Neon Violet (a radiant, intense purple)
+            (1.00, 0.05, 0.65),  
+            # Neon Magenta (a vibrant, hot pink to kick off)
+            (1.00, 0.10, 0.10),  
+            # Neon Red (a bright, intense red)
+            (1.00, 0.50, 0.00),  
+            # Neon Orange (a vivid, fiery orange)
+            (1.00, 1.00, 0.00),  
+            # Neon Yellow (a pure, dazzling yellow)
+            (0.20, 1.00, 0.20),  
+            # Neon Lime Green (an electric, bright green)
+            (0.00, 0.80, 1.00),  
+            # Neon Cyan (a brilliant, striking blue)
+            (0.50, 0.20, 1.00),  
+            # Neon Indigo (a deep, electric blue-purple)
+            (0.80, 0.00, 1.00),  
+            # Neon Violet (a radiant, intense purple)
         ]
         
         # Configure the file menu
@@ -922,8 +895,10 @@ class Gui(wx.Frame):
         self.themeMenu = wx.Menu()
         self.LIGHT_MODE_ID = wx.NewId()
         self.DARK_MODE_ID = wx.NewId()
-        self.light_mode_item = self.themeMenu.AppendRadioItem(self.LIGHT_MODE_ID, wx.GetTranslation("Light Mode"))
-        self.dark_mode_item = self.themeMenu.AppendRadioItem(self.DARK_MODE_ID, wx.GetTranslation("Dark Mode"))
+        self.light_mode_item = self.themeMenu.AppendRadioItem(
+            self.LIGHT_MODE_ID, wx.GetTranslation("Light Mode"))
+        self.dark_mode_item = self.themeMenu.AppendRadioItem(
+            self.DARK_MODE_ID, wx.GetTranslation("Dark Mode"))
         menuBar.Append(self.themeMenu, wx.GetTranslation("&Theme"))
         
         self.SetMenuBar(menuBar)
@@ -940,40 +915,60 @@ class Gui(wx.Frame):
         
         # Canvas for drawing signals
         self.canvas = MyGLCanvas(main_panel, devices, monitors)
-        self.canvas.signal_colors = self.light_signal_colors  # Set initial signal colors
+        self.canvas.signal_colors = self.light_signal_colors  
+        # Set initial signal colors
         
         # Create bold Arial font for box titles
-        title_font = wx.Font(9, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        title_font = wx.Font(
+            9, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         
         # Simulation controls
-        self.sim_box = wx.StaticBox(self.control_panel, label=wx.GetTranslation("Simulation Controls", ))
+        self.sim_box = wx.StaticBox(
+            self.control_panel, label=wx.GetTranslation(
+                "Simulation Controls", ))
         self.sim_box.SetFont(title_font)
         sim_sizer = wx.StaticBoxSizer(self.sim_box, wx.VERTICAL)
         
         # Add speed control at the top
         speed_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.speed_btn = wx.Button(self.control_panel, label=self.current_speed, size=(60, 25))
-        speed_label = wx.StaticText(self.control_panel, label=wx.GetTranslation("Speed:"))
+        self.speed_btn = wx.Button(
+            self.control_panel, label=self.current_speed, size=(60, 25))
+        speed_label = wx.StaticText(
+            self.control_panel, label=wx.GetTranslation("Speed:"))
         speed_sizer.Add(speed_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 5)
         speed_sizer.Add(self.speed_btn, 0)
         sim_sizer.Add(speed_sizer, 0, wx.ALIGN_RIGHT | wx.ALL, 5)
         
         # Cycles control
-        cycles_label = wx.StaticText(self.control_panel, label=wx.GetTranslation("Number of Cycles:"))
-        self.cycles_spin = wx.SpinCtrl(self.control_panel, value="10", min=1, max=1000)
+        cycles_label = wx.StaticText(
+            self.control_panel, label=wx.GetTranslation("Number of Cycles:"))
+        self.cycles_spin = wx.SpinCtrl(
+            self.control_panel, value="10", min=1, max=1000)
         
         # Buttons with better styling
         button_style = wx.BORDER_NONE
-        self.run_button = wx.Button(self.control_panel, label=wx.GetTranslation("▶ Run Simulation"), style=button_style)
-        self.stop_button = wx.Button(self.control_panel, label=wx.GetTranslation("❚❚ Pause"), style=button_style)
-        self.reset_button = wx.Button(self.control_panel, label=wx.GetTranslation("■ Reset"), style=button_style)
-        self.continuous_button = wx.Button(self.control_panel, label=wx.GetTranslation("∞ Continuous"), style=button_style)
+        self.run_button = wx.Button(
+            self.control_panel, label=wx.GetTranslation(
+                "▶ Run Simulation"), style=button_style)
+        self.stop_button = wx.Button(
+            self.control_panel, label=wx.GetTranslation(
+                "❚❚ Pause"), style=button_style)
+        self.reset_button = wx.Button(
+            self.control_panel, label=wx.GetTranslation(
+                "■ Reset"), style=button_style)
+        self.continuous_button = wx.Button(
+            self.control_panel, label=wx.GetTranslation(
+                "∞ Continuous"), style=button_style)
         
         # Set button colors and style
-        self.run_button.SetBackgroundColour(wx.Colour(0, 184, 148))  # Green
-        self.stop_button.SetBackgroundColour(wx.Colour(255, 159, 26))  # Orange
-        self.reset_button.SetBackgroundColour(wx.Colour(255, 71, 87))  # Red
-        self.continuous_button.SetBackgroundColour(wx.Colour(255, 255, 255))  # White
+        self.run_button.SetBackgroundColour(wx.Colour(0, 184, 148))  
+        # Green
+        self.stop_button.SetBackgroundColour(wx.Colour(255, 159, 26))  
+        # Orange
+        self.reset_button.SetBackgroundColour(wx.Colour(255, 71, 87)) 
+        # Red
+        self.continuous_button.SetBackgroundColour(wx.Colour(255, 255, 255))  
+        # White
         # Set text color to white for better contrast
         self.run_button.SetForegroundColour(wx.WHITE)
         self.stop_button.SetForegroundColour(wx.WHITE)
@@ -989,14 +984,18 @@ class Gui(wx.Frame):
         sim_sizer.Add(self.continuous_button, 0, wx.EXPAND | wx.ALL, 8)
 
         # Add switch controls section
-        self.switch_box = wx.StaticBox(self.control_panel, label=wx.GetTranslation("Switch Controls"))
+        self.switch_box = wx.StaticBox(
+            self.control_panel, label=wx.GetTranslation("Switch Controls"))
         self.switch_box.SetFont(title_font)
         switch_sizer = wx.StaticBoxSizer(self.switch_box, wx.VERTICAL)
         
         # Create a list control for switches
-        self.switch_list = CustomListCtrl(self.control_panel, style=wx.LC_REPORT, gui=self)
-        self.switch_list.InsertColumn(0, wx.GetTranslation("Switch"), width=150)  # Switch name column
-        self.switch_list.InsertColumn(1, wx.GetTranslation("State"), width=80)  # State column
+        self.switch_list = CustomListCtrl(
+            self.control_panel, style=wx.LC_REPORT, gui=self)
+        self.switch_list.InsertColumn(
+            0, wx.GetTranslation("Switch"), width=150)  # Switch name column
+        self.switch_list.InsertColumn(
+            1, wx.GetTranslation("State"), width=80)  # State column
         
         # Enable multiple selection
         current_style = self.switch_list.GetWindowStyle()
@@ -1004,8 +1003,10 @@ class Gui(wx.Frame):
         self.switch_list.SetWindowStyle(current_style & ~wx.LC_SINGLE_SEL)
         
         # Add toggle buttons for all on/off
-        self.all_on_btn = wx.Button(self.control_panel, label=wx.GetTranslation("All On"))
-        self.all_off_btn = wx.Button(self.control_panel, label=wx.GetTranslation("All Off"))
+        self.all_on_btn = wx.Button(
+            self.control_panel, label=wx.GetTranslation("All On"))
+        self.all_off_btn = wx.Button(
+            self.control_panel, label=wx.GetTranslation("All Off"))
         self.all_on_btn.Enable(True)
         self.all_off_btn.Enable(True)
         
@@ -1017,22 +1018,33 @@ class Gui(wx.Frame):
         switch_sizer.Add(btn_row, 0, wx.EXPAND | wx.ALL, 5)
 
         # Monitor controls
-        self.monitor_box = wx.StaticBox(self.control_panel, label=wx.GetTranslation("Monitors"))
+        self.monitor_box = wx.StaticBox(
+            self.control_panel, label=wx.GetTranslation("Monitors"))
         self.monitor_box.SetFont(title_font)
         monitor_sizer = wx.StaticBoxSizer(self.monitor_box, wx.VERTICAL)
         
         # Create monitor list with proper columns - only one set of columns
-        self.monitor_list = CustomListCtrl(self.control_panel, style=wx.LC_REPORT, gui=self)
-        self.monitor_list.InsertColumn(0, "", width=20)   # Narrow column for color indicator
-        self.monitor_list.InsertColumn(1, wx.GetTranslation("Signal"), width=140)  # Device name column
-        self.monitor_list.InsertColumn(2, wx.GetTranslation("State"), width=55)  # State column, narrower
-        self.monitor_list.InsertColumn(3, "", width=45)  # Zap button column, even wider for scroll bar
+        self.monitor_list = CustomListCtrl(
+            self.control_panel, style=wx.LC_REPORT, gui=self)
+        self.monitor_list.InsertColumn(0, "", width=20)   
+        # Narrow column for color indicator
+        self.monitor_list.InsertColumn(
+            1, wx.GetTranslation("Signal"), width=140)  
+        # Device name column
+        self.monitor_list.InsertColumn(2, wx.GetTranslation("State"), width=55)  
+        # State column, narrower
+        self.monitor_list.InsertColumn(3, "", width=45)  
+        # Zap button column, even wider for scroll bar
         
         # Set column widths
-        self.monitor_list.SetColumnWidth(0, 20)   # Narrow column for color indicator
-        self.monitor_list.SetColumnWidth(1, 140)  # Fixed width for device name
-        self.monitor_list.SetColumnWidth(2, 55)   # Fixed width for state, narrower
-        self.monitor_list.SetColumnWidth(3, 45)   # Fixed width for zap button, even wider for scroll bar
+        self.monitor_list.SetColumnWidth(0, 20)   
+        # Narrow column for color indicator
+        self.monitor_list.SetColumnWidth(1, 140)  
+        # Fixed width for device name
+        self.monitor_list.SetColumnWidth(2, 55)   
+        # Fixed width for state, narrower
+        self.monitor_list.SetColumnWidth(3, 45)   
+        # Fixed width for zap button, even wider for scroll bar
         
         # Enable multiple selection
         current_style = self.monitor_list.GetWindowStyle()
@@ -1041,8 +1053,10 @@ class Gui(wx.Frame):
         
         # Add/Remove monitor buttons
         monitor_btn_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.add_monitor_btn = wx.Button(self.control_panel, label=wx.GetTranslation("Add Monitor(s)"))
-        self.remove_monitor_btn = wx.Button(self.control_panel, label=wx.GetTranslation("Zap All"))
+        self.add_monitor_btn = wx.Button(
+            self.control_panel, label=wx.GetTranslation("Add Monitor(s)"))
+        self.remove_monitor_btn = wx.Button(
+            self.control_panel, label=wx.GetTranslation("Zap All"))
         monitor_btn_sizer.Add(self.add_monitor_btn, 1, wx.RIGHT, 5)
         monitor_btn_sizer.Add(self.remove_monitor_btn, 1)
         
@@ -1051,8 +1065,10 @@ class Gui(wx.Frame):
         monitor_sizer.Add(monitor_btn_sizer, 0, wx.EXPAND | wx.ALL, 5)
         
         # Bind selection event for color update
-        self.monitor_list.Bind(wx.EVT_LIST_ITEM_SELECTED, self.on_monitor_selected)
-        self.monitor_list.Bind(wx.EVT_LIST_ITEM_DESELECTED, self.on_monitor_selected)
+        self.monitor_list.Bind(
+            wx.EVT_LIST_ITEM_SELECTED, self.on_monitor_selected)
+        self.monitor_list.Bind(
+            wx.EVT_LIST_ITEM_DESELECTED, self.on_monitor_selected)
 
         # Build the control panel
         control_sizer = wx.BoxSizer(wx.VERTICAL)
@@ -1087,12 +1103,14 @@ class Gui(wx.Frame):
         self.all_off_btn.Bind(wx.EVT_BUTTON, self.on_all_off)
         self.speed_btn.Bind(wx.EVT_BUTTON, self.on_speed_button)
         
-        # Add accelerator table for F1 (Help), Alt+F4 (Exit), and Spacebar (Run/Pause)
+        # Add accelerator table for F1 (Help), Alt+F4 (Exit), 
+        # and Spacebar (Run/Pause)
         self.SPACEBAR_ID = wx.NewId()
         accel_tbl = wx.AcceleratorTable([
             (wx.ACCEL_NORMAL, wx.WXK_F1, wx.ID_HELP),
             (wx.ACCEL_ALT, wx.WXK_F4, wx.ID_EXIT),
-            (wx.ACCEL_NORMAL, wx.WXK_SPACE, self.SPACEBAR_ID),  # Spacebar for run/pause
+            (wx.ACCEL_NORMAL, wx.WXK_SPACE, self.SPACEBAR_ID),  
+            # Spacebar for run/pause
         ])
         self.SetAcceleratorTable(accel_tbl)
 
@@ -1101,7 +1119,8 @@ class Gui(wx.Frame):
         
         # Initialize lists
         self.update_switch_list()
-        self.update_monitor_list(show_states=False)  # Don't show states on startup
+        self.update_monitor_list(show_states=False)  
+        # Don't show states on startup
         
         # Set minimum window size
         self.SetMinSize((800, 600))
@@ -1127,12 +1146,19 @@ class Gui(wx.Frame):
             self.Close(True)
         if Id == wx.ID_ABOUT:
             wx.MessageBox(
-                wx.GetTranslation("Logic Simulator\nCreated by:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"),
+                wx.GetTranslation(
+                    "Logic Simulator\n" + \
+                    "Created by:\n" + \
+                    "Ayoife Dada\n" + \
+                    "Narmeephan Arunthavarajah\n" + \
+                    "Raghavendra Narayan Rao\n" + \
+                    "2025"),
                 wx.GetTranslation("About Logsim"),
                 wx.ICON_INFORMATION | wx.OK
             )
         if Id == wx.ID_HELP:
-            wx.MessageBox(wx.GetTranslation("How to Use the Logic Simulator GUI\n"
+            wx.MessageBox(wx.GetTranslation(
+                "How to Use the Logic Simulator GUI\n"
     "\n"
     "---\n"
     "\n"
@@ -1143,19 +1169,23 @@ class Gui(wx.Frame):
     "\n"
     "**Simulation Controls**\n"
     "- **Number of Cycles:** Set how many cycles to run the simulation for.\n"
-    "- **▶ Run Simulation:** Start the simulation for the chosen number of cycles.\n"
+    "- **▶ Run Simulation:** " + \
+    "Start the simulation for the chosen number of cycles.\n"
     "- **❚❚ Pause:** Pause the simulation at any time.\n"
     "- **■ Reset:** Reset the simulation and clear all monitor data.\n"
-    "- **Speed:** Click to cycle through simulation speeds (x0.5, x1, x2, x4, x8).\n"
+    "- **Speed:** Click to cycle through simulation speeds " + \
+    "(x0.5, x1, x2, x4, x8).\n"
     "\n"
     "**Switch Controls**\n"
     "- Toggle individual switches by clicking the switch in the list.\n"
     "- Use **All On** or **All Off** to set all switches high or low.\n"
     "\n"
     "**Monitors**\n"
-    "- Add a monitor to track a signal by clicking **Add Monitor** and selecting a signal.\n"
+    "- Add a monitor to track a signal by clicking **Add Monitor** " + \
+    "and selecting a signal.\n"
     "- Use **Add All** in the dialog to monitor all available signals.\n"
-    "- Remove a monitor by clicking the ✕ button next to it, or **Zap All** to remove all monitors.\n"
+    "- Remove a monitor by clicking the ✕ button next to it," + \
+    " or **Zap All** to remove all monitors.\n"
     "- The monitor list shows the current state of each monitored signal.\n"
     "\n"
     "**Signal Display Canvas**\n"
@@ -1232,8 +1262,11 @@ class Gui(wx.Frame):
             self.cycles_spin.Disable()
             
             # Start the simulation timer with current speed setting
-            self.simulation_timer.Start(self.speed_settings[self.current_speed])
-            self.SetStatusText(wx.GetTranslation("Running simulation for {num_cycles} cycles...").format(num_cycles=num_cycles))
+            self.simulation_timer.Start(
+                self.speed_settings[self.current_speed])
+            self.SetStatusText(wx.GetTranslation(
+                "Running simulation for {num_cycles} cycles...").format(
+                    num_cycles=num_cycles))
 
     def stop_simulation(self):
         """Stop the currently running simulation."""
@@ -1277,10 +1310,12 @@ class Gui(wx.Frame):
                 
                 if self.current_cycle >= self.target_cycles:
                     self.stop_simulation()
-                    self.SetStatusText(wx.GetTranslation("Simulation completed"))
+                    self.SetStatusText(wx.GetTranslation(
+                        "Simulation completed"))
             else:
                 self.stop_simulation()
-                self.SetStatusText(wx.GetTranslation("Simulation error occurred"))
+                self.SetStatusText(wx.GetTranslation(
+                    "Simulation error occurred"))
                 
     def execute_cycle(self):
         """Execute a single cycle of the simulation."""
@@ -1297,7 +1332,8 @@ class Gui(wx.Frame):
                 
             return True
         except Exception as e:
-            wx.MessageBox(wx.GetTranslation("Error during simulation: {str(e)}".format(str(e))), 
+            wx.MessageBox(wx.GetTranslation(
+                "Error during simulation: {str(e)}".format(str(e))), 
                          wx.GetTranslation("Simulation Error"),
                          wx.OK | wx.ICON_ERROR)
             return False
@@ -1338,9 +1374,11 @@ class Gui(wx.Frame):
             
         self.monitor_list.DeleteAllItems()
         
-        # Get monitored signals and maintain original order from monitors dictionary
+        # Get monitored signals and maintain original order from 
+        # monitors dictionary
         monitored_signals = []
-        for i, (device_id, output_id) in enumerate(self.monitors.monitors_dictionary):
+        for i, (device_id, output_id) in enumerate(
+            self.monitors.monitors_dictionary):
             signal_name = self.devices.get_signal_name(device_id, output_id)
             # Store original index to maintain color consistency
             monitored_signals.append((signal_name, device_id, output_id, i))
@@ -1349,11 +1387,13 @@ class Gui(wx.Frame):
         monitored_signals.sort(key=lambda x: x[0])  # Sort by signal name
         
         # Add to list
-        for list_index, (signal_name, device_id, output_id, original_index) in enumerate(monitored_signals):
+        for list_index, (signal_name, device_id, output_id, original_index) \
+            in enumerate(monitored_signals):
             # Get color based on index
             color_index = original_index % len(self.canvas.signal_colors)
             color = self.canvas.signal_colors[color_index]
-            wx_color = wx.Colour(int(color[0] * 255), int(color[1] * 255), int(color[2] * 255))
+            wx_color = wx.Colour(int(color[0] * 255), int(color[1] * 255), int(
+                color[2] * 255))
             
             # Add items with default colors first
             index = self.monitor_list.InsertItem(list_index, "║")
@@ -1361,9 +1401,11 @@ class Gui(wx.Frame):
             
             # Set the background color based on alternating rows
             if list_index % 2 == 0:
-                self.monitor_list.SetItemBackgroundColour(index, self.current_theme['list']['background'])
+                self.monitor_list.SetItemBackgroundColour(
+                    index, self.current_theme['list']['background'])
             else:
-                self.monitor_list.SetItemBackgroundColour(index, self.current_theme['list']['alternate'])
+                self.monitor_list.SetItemBackgroundColour(
+                    index, self.current_theme['list']['alternate'])
             
             # Then set color only for the vertical bar
             item = self.monitor_list.GetItem(index, 0)
@@ -1380,7 +1422,8 @@ class Gui(wx.Frame):
             # Only show states if we're running
             if show_states:
                 # Get current signal value
-                current_signal = self.network.get_output_signal(device_id, output_id)
+                current_signal = self.network.get_output_signal(
+                    device_id, output_id)
                 if current_signal is not None:
                     if current_signal == self.devices.HIGH:
                         state = "HIGH"
@@ -1395,18 +1438,23 @@ class Gui(wx.Frame):
                     self.monitor_list.SetItem(index, 2, state)
             
             # Add zap button with adjusted position to account for scroll bar
-            zap_button = wx.Button(self.monitor_list, id=index, label="✕", size=(25, 20), style=wx.NO_BORDER)
-            zap_button.SetBackgroundColour(self.current_theme['button']['reset'])  # Red color
+            zap_button = wx.Button(self.monitor_list, id=index, label="✕", 
+                                   size=(25, 20), style=wx.NO_BORDER)
+            zap_button.SetBackgroundColour(
+                self.current_theme['button']['reset'])  # Red color
             zap_button.SetForegroundColour(wx.BLACK)  # Black text for contrast
             bold_font = zap_button.GetFont()
             bold_font.SetWeight(wx.FONTWEIGHT_BOLD)
             zap_button.SetFont(bold_font)
-            zap_button.Bind(wx.EVT_BUTTON, lambda evt, signal=signal_name: self.on_zap_button(evt, signal))
+            zap_button.Bind(wx.EVT_BUTTON, lambda evt, signal=signal_name: 
+                            self.on_zap_button(evt, signal))
             
             # Get the item rect for the zap button column
             rect = self.monitor_list.GetItemRect(index, wx.LIST_RECT_BOUNDS)
             col_width = self.monitor_list.GetColumnWidth(3)
-            button_x = rect.x + self.monitor_list.GetColumnWidth(0) + self.monitor_list.GetColumnWidth(1) + self.monitor_list.GetColumnWidth(2)
+            button_x = rect.x + self.monitor_list.GetColumnWidth(0) + \
+                self.monitor_list.GetColumnWidth(1) + \
+                self.monitor_list.GetColumnWidth(2)
             zap_button.SetPosition((button_x + 5, rect.y + 2))
             
             # Store the button reference to prevent garbage collection
@@ -1415,21 +1463,31 @@ class Gui(wx.Frame):
             self.monitor_list.zap_buttons[index] = zap_button
             
         # Adjust column widths
-        self.monitor_list.SetColumnWidth(0, 20)   # Narrow column for color indicator
-        self.monitor_list.SetColumnWidth(1, 140)  # Fixed width for device name
-        self.monitor_list.SetColumnWidth(2, 55)   # Fixed width for state, narrower
-        self.monitor_list.SetColumnWidth(3, 45)   # Fixed width for zap button, even wider for scroll bar
+        self.monitor_list.SetColumnWidth(0, 20)   
+        # Narrow column for color indicator
+        self.monitor_list.SetColumnWidth(1, 140)  
+        # Fixed width for device name
+        self.monitor_list.SetColumnWidth(2, 55)   
+        # Fixed width for state, narrower
+        self.monitor_list.SetColumnWidth(3, 45)   
+        # Fixed width for zap button, even wider for scroll bar
 
     def on_zap_button(self, event, signal_name):
         """Handle clicking the zap button for a specific monitor."""
         # Find the device and output IDs for this signal
-        for (device_id, output_id) in list(self.monitors.monitors_dictionary.keys()):
-            if signal_name == self.devices.get_signal_name(device_id, output_id):
+        for (device_id, output_id) in list(
+            self.monitors.monitors_dictionary.keys()):
+            if signal_name == self.devices.get_signal_name(
+                device_id, output_id):
                 # Remove the monitor
                 if self.monitors.remove_monitor(device_id, output_id):
-                    self.SetStatusText(wx.GetTranslation("Zapped monitor for {signal_name}".format(signal_name=signal_name)))
+                    self.SetStatusText(wx.GetTranslation(
+                        "Zapped monitor for {signal_name}".format(
+                            signal_name=signal_name)))
                 else:
-                    wx.MessageBox(wx.GetTranslation("Failed to zap monitor {signal_name}".format(signal_name=signal_name)),
+                    wx.MessageBox(wx.GetTranslation(
+                        "Failed to zap monitor {signal_name}".format(
+                            signal_name=signal_name)),
                             wx.GetTranslation("Error"),
                             wx.OK | wx.ICON_ERROR
                         )
@@ -1443,17 +1501,21 @@ class Gui(wx.Frame):
         signal_data = {}
         
         # Get all monitored signals
-        for (device_id, output_id), signal_list in self.monitors.monitors_dictionary.items():
+        for (device_id, output_id), signal_list in \
+            self.monitors.monitors_dictionary.items():
             signal_name = self.devices.get_signal_name(device_id, output_id)
             # Convert signal values to binary (0 or 1) or None for BLANK
             binary_signals = []
             for signal in signal_list:
-                if signal == self.devices.HIGH or signal == self.devices.RISING:
+                if signal == self.devices.HIGH or \
+                    signal == self.devices.RISING:
                     binary_signals.append(1)
-                elif signal == self.devices.LOW or signal == self.devices.FALLING:
+                elif signal == self.devices.LOW or \
+                    signal == self.devices.FALLING:
                     binary_signals.append(0)
                 elif signal == self.devices.BLANK:
-                    binary_signals.append(None)  # Use None to represent blank/no signal
+                    binary_signals.append(None)  
+                    # Use None to represent blank/no signal
                 else:
                     # For any other signal state, treat as blank
                     binary_signals.append(None)
@@ -1473,7 +1535,9 @@ class Gui(wx.Frame):
         _, non_monitored = self.monitors.get_signal_names()
         
         if not non_monitored:
-            wx.MessageBox(wx.GetTranslation("No more signals available to monitor"), wx.GetTranslation("Information"),
+            wx.MessageBox(wx.GetTranslation(
+                "No more signals available to monitor"), wx.GetTranslation(
+                    "Information"),
                          wx.OK | wx.ICON_INFORMATION)
             dialog.Destroy()
             return
@@ -1502,12 +1566,15 @@ class Gui(wx.Frame):
         
         # Enable Add button only when a signal is selected
         ok_button.Enable(False)
-        signal_choice.Bind(wx.EVT_CHOICE, lambda evt: ok_button.Enable(evt.GetSelection() != -1))
+        signal_choice.Bind(wx.EVT_CHOICE, lambda evt: ok_button.Enable(
+            evt.GetSelection() != -1))
         
         # Bind Add All button
-        add_all_button.Bind(wx.EVT_BUTTON, lambda evt: self.on_add_all_monitors(evt, dialog))
+        add_all_button.Bind(wx.EVT_BUTTON, lambda evt: 
+                            self.on_add_all_monitors(evt, dialog))
         
-        if dialog.ShowModal() == wx.ID_OK and signal_choice.GetSelection() != -1:
+        if dialog.ShowModal() == wx.ID_OK and \
+            signal_choice.GetSelection() != -1:
             signal_name = signal_choice.GetString(signal_choice.GetSelection())
             self.add_single_monitor(signal_name)
                 
@@ -1519,24 +1586,31 @@ class Gui(wx.Frame):
         current_cycles = 0
         if self.monitors.monitors_dictionary:
             # Get the length of signal history from the first monitor
-            first_monitor = next(iter(self.monitors.monitors_dictionary.values()))
+            first_monitor = next(iter(
+                self.monitors.monitors_dictionary.values()))
             current_cycles = len(first_monitor)
         # Find the device and output IDs for this signal
         for device_id in self.devices.find_devices():
             device = self.devices.get_device(device_id)
             for output_id in device.outputs:
-                if signal_name == self.devices.get_signal_name(device_id, output_id):
+                if signal_name == self.devices.get_signal_name(
+                    device_id, output_id):
                     # Add the monitor with current signal history length
                     if (
-                        self.monitors.make_monitor(device_id, output_id, current_cycles)
+                        self.monitors.make_monitor(
+                            device_id, output_id, current_cycles)
                         == self.monitors.NO_ERROR
                     ):
                         self.update_monitor_list(show_states=self.is_running)
                         self.update_signal_display()
-                        self.SetStatusText(wx.GetTranslation("Added monitor for {signal_name}").format(signal_name=signal_name))
+                        self.SetStatusText(wx.GetTranslation(
+                            "Added monitor for {signal_name}").format(
+                                signal_name=signal_name))
                         return True
                     else:
-                        wx.MessageBox(wx.GetTranslation("Failed to add monitor for {signal_name}").format(signal_name=signal_name),
+                        wx.MessageBox(wx.GetTranslation(
+                            "Failed to add monitor for {signal_name}").format(
+                                signal_name=signal_name),
                             wx.GetTranslation("Error"),
                             wx.OK | wx.ICON_ERROR
                         )
@@ -1556,7 +1630,9 @@ class Gui(wx.Frame):
         # Ask for confirmation
         dlg = wx.MessageDialog(
                 dialog,
-                wx.GetTranslation("Add all {len(non_monitored)} available signals?").format(len(non_monitored)),
+                wx.GetTranslation(
+                    "Add all {len(non_monitored)} available signals?").format(
+                        len(non_monitored)),
                 wx.GetTranslation("Confirm Add All"),
                 wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION
             )
@@ -1565,7 +1641,9 @@ class Gui(wx.Frame):
             for signal_name in non_monitored:
                 if self.add_single_monitor(signal_name):
                     success_count += 1
-            self.SetStatusText(wx.GetTranslation("Added {success_count} monitors").format(success_count=success_count))
+            self.SetStatusText(wx.GetTranslation(
+                "Added {success_count} monitors").format(
+                    success_count=success_count))
             dialog.EndModal(wx.ID_CANCEL)
         dlg.Destroy()
 
@@ -1589,12 +1667,15 @@ class Gui(wx.Frame):
             # Get all monitors before removing them
             monitor_count = len(self.monitors.monitors_dictionary)
             # Remove all monitors
-            for (device_id, output_id) in list(self.monitors.monitors_dictionary.keys()):
+            for (device_id, output_id) in list(
+                self.monitors.monitors_dictionary.keys()):
                 self.monitors.remove_monitor(device_id, output_id)
             # Update display after all monitors are removed
             self.update_monitor_list(show_states=self.is_running)
             self.update_signal_display()
-            self.SetStatusText(wx.GetTranslation("Zapped all {monitor_count} monitors").format(monitor_count=monitor_count))
+            self.SetStatusText(wx.GetTranslation(
+                "Zapped all {monitor_count} monitors").format(
+                    monitor_count=monitor_count))
         dlg.Destroy()
 
     def update_switch_list(self):
@@ -1615,14 +1696,16 @@ class Gui(wx.Frame):
             
             # Add to list
             index = self.switch_list.InsertItem(i, switch_name)
-            self.switch_list.SetItem(index, 1, "")  # Empty string as we'll draw custom switch
+            self.switch_list.SetItem(index, 1, "") 
+            # Empty string as we'll draw custom switch
             
             # Set text color based on current theme
             item = self.switch_list.GetItem(index, 0)
             item.SetTextColour(self.current_theme['text'])
             self.switch_list.SetItem(item)
             
-            # Create and store renderer for this switch with current theme colors
+            # Create and store renderer for this switch 
+            # with current theme colors
             switch_theme = {
                 'background': self.current_theme['list']['background'],
                 'switch_on': self.current_theme['switch']['on'],
@@ -1636,8 +1719,8 @@ class Gui(wx.Frame):
             self.switch_list.update_item_color(index)
         
         # Adjust column widths
-        self.switch_list.SetColumnWidth(0, 150)  # Fixed width for name column
-        self.switch_list.SetColumnWidth(1, 80)   # Fixed width for switch column
+        self.switch_list.SetColumnWidth(0, 150) # Fixed width for name column
+        self.switch_list.SetColumnWidth(1, 80) # Fixed width for switch column
         
         # Force a refresh to update the switches
         self.switch_list.Refresh()
@@ -1692,15 +1775,21 @@ class Gui(wx.Frame):
         # Apply to main window and panel backgrounds
         self.SetBackgroundColour(self.current_theme['background'])
         # Apply to control panel and its background
-        self.control_panel.SetBackgroundColour(self.current_theme['background'])
+        self.control_panel.SetBackgroundColour(
+            self.current_theme['background'])
         # Apply to buttons with consistent white text
         button_text_color = wx.Colour(255, 255, 255)
         # Main control buttons
-        self.run_button.SetBackgroundColour(self.current_theme['button']['run'])
-        self.stop_button.SetBackgroundColour(self.current_theme['button']['stop'])
-        self.reset_button.SetBackgroundColour(self.current_theme['button']['reset'])
-        self.continuous_button.SetBackgroundColour(self.current_theme['button']['continuous'])
-        for btn in [self.run_button, self.stop_button, self.reset_button, self.continuous_button]:
+        self.run_button.SetBackgroundColour(
+            self.current_theme['button']['run'])
+        self.stop_button.SetBackgroundColour(
+            self.current_theme['button']['stop'])
+        self.reset_button.SetBackgroundColour(
+            self.current_theme['button']['reset'])
+        self.continuous_button.SetBackgroundColour(
+            self.current_theme['button']['continuous'])
+        for btn in [self.run_button, self.stop_button, self.reset_button, 
+                    self.continuous_button]:
             btn.SetForegroundColour(button_text_color)
         # Secondary buttons with theme-based background
         secondary_buttons = [
@@ -1713,7 +1802,8 @@ class Gui(wx.Frame):
         for btn in secondary_buttons:
             btn.SetBackgroundColour(self.current_theme['list']['background'])
             btn.SetForegroundColour(self.current_theme['text'])
-        # Apply to lists - only set background colors, let text inherit from theme
+        # Apply to lists - only set background colors,
+        # let text inherit from theme
         for lst in [self.switch_list, self.monitor_list]:
             lst.set_colors(
                 self.current_theme['list']['background'],
@@ -1735,20 +1825,23 @@ class Gui(wx.Frame):
                         'switch_off': self.current_theme['switch']['off'],
                         'switch_bg': self.current_theme['switch']['handle']
                     }
-                    lst.switch_renderers[index] = SwitchRenderer(is_high, switch_theme)
+                    lst.switch_renderers[index] = SwitchRenderer(
+                        is_high, switch_theme)
                 lst.Refresh()
                 wx.CallAfter(lst.draw_all_switches)
                 # --- End: Update switch renderers with new theme ---
         # Apply to static boxes and their backgrounds
         for box in [self.sim_box, self.switch_box, self.monitor_box]:
-            box.SetBackgroundColour(self.current_theme['static_box']['background'])
+            box.SetBackgroundColour(
+                self.current_theme['static_box']['background'])
             box.SetForegroundColour(self.current_theme['text'])
             # Update the label color
             label = box.GetLabel()
             box.SetLabel("")
             box.SetLabel(label)
         # Apply to spin control and its text
-        self.cycles_spin.SetBackgroundColour(self.current_theme['list']['background'])
+        self.cycles_spin.SetBackgroundColour(
+            self.current_theme['list']['background'])
         self.cycles_spin.SetForegroundColour(self.current_theme['text'])
         # Apply to all static text controls in the panel
         for child in self.control_panel.GetChildren():
@@ -1801,7 +1894,8 @@ class Gui(wx.Frame):
         index = event.GetIndex()
         if index != -1:
             # Enable zap button when monitors are selected
-            self.remove_monitor_btn.Enable(self.monitor_list.GetSelectedItemCount() > 0)
+            self.remove_monitor_btn.Enable(
+                self.monitor_list.GetSelectedItemCount() > 0)
         event.Skip()
 
     def on_spacebar_toggle(self, event):
