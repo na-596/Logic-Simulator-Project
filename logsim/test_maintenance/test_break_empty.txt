@@ -1,5 +1,19 @@
-/*
-    Name the gates, switches and clocks. 
-    Number of inputs and outputs
-    does not need to be defined for DTYPE 
-*/ 
+DEVICES D1:DTYPE,
+        N1:NAND 2,
+        S1:SWITCH 0,
+        S2:SWITCH 1,
+        S3:SWITCH 0,
+        X1:FLIPFLOP 2;      # FLIPFLOP is not a valid device type
+
+CONNECT S1 -> D1.SET,        # '->' should be '>'
+        S2 > D1.DATA,
+        S3 > D1.CLEAR,
+        D1.Q > D2.DATA,    # D2 is not defined in DEVICES
+        D1.QBAR > N1.I2,
+        N1.I3 -> S1;        # I3 is not a valid pin for SWITCH
+
+MONITOR D1.QBAR,
+        N1,
+        S4;                 # S4 is not defined
+
+# END is missing

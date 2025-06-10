@@ -2,16 +2,35 @@
 
 DEVICES D1:DTYPE,
         D2:DTYPE, 
+        D3:DTYPE XOR,
+        D4:DTYPE AND,
+        D2:DTYPE,
+
         N1:NAND 2,
+        N1:NAND 2,
+        N2:NAND AND,
+        N3:NAND XOR,
+        N4:NAND 0010010101,
+
+        C1:CLOCK AND,
+        C2:CLOCK 010,
+        C3:CLOCK 5,
+        C3:CLOCK 5,
+        X1:XOR AND,
+
+        SI1:SIGGEN AND,
+        SI2:SIGGEN 0010001,
+        SIGGEN: SIGGEN 0101010,
+        DEVICES: SIGGEN 0101010,
         
+        S0:SWITCH DEVICES,
         S1:SWITCH 01,
         S2:SWITCH ,
         S3:SWITCH a,
         S4:SWITCH 2,
         S5:SWITCH 1a,
         S6:SWITCH 0,
-        S7:SWITCH 1,
-        SI1:SIGGEN 10100;
+        S7:SWITCH 1;
 
 /* connect inputs and outputs */
 CONNECT S1 > D1.SET,

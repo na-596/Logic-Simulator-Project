@@ -148,17 +148,37 @@ class Parser:
             return error
         # Handle AND, OR, NAND, NOR devices
         if device_type_id == self.scanner.AND_ID:
-            error = self.devices.make_device(
-                device_id, self.devices.AND, device_property=self.symbol.id)
+            if self.symbol.type != self.scanner.NUMBER:
+                error = self.NO_NUMBER
+                if self.symbol.type == self.scanner.COMMA:
+                    return error
+            else:
+                error = self.devices.make_device(
+                    device_id, self.devices.AND, device_property=self.symbol.id)
         elif device_type_id == self.scanner.OR_ID:
-            error = self.devices.make_device(
-                device_id, self.devices.OR, device_property=self.symbol.id)
+            if self.symbol.type != self.scanner.NUMBER:
+                error = self.NO_NUMBER
+                if self.symbol.type == self.scanner.COMMA:
+                    return error
+            else:
+                error = self.devices.make_device(
+                    device_id, self.devices.OR, device_property=self.symbol.id)
         elif device_type_id == self.scanner.NAND_ID:
-            error = self.devices.make_device(
-                device_id, self.devices.NAND, device_property=self.symbol.id)
+            if self.symbol.type != self.scanner.NUMBER:
+                error = self.NO_NUMBER
+                if self.symbol.type == self.scanner.COMMA:
+                    return error
+            else:
+                error = self.devices.make_device(
+                    device_id, self.devices.NAND, device_property=self.symbol.id)
         elif device_type_id == self.scanner.NOR_ID:
-            error = self.devices.make_device(
-                device_id, self.devices.NOR, device_property=self.symbol.id)
+            if self.symbol.type != self.scanner.NUMBER:
+                error = self.NO_NUMBER
+                if self.symbol.type == self.scanner.COMMA:
+                    return error
+            else:
+                error = self.devices.make_device(
+                    device_id, self.devices.NOR, device_property=self.symbol.id)
         # Check for missing or invalid qualifiers
         if error == self.devices.NO_QUALIFIER:
             error = self.NO_NUMBER
@@ -166,10 +186,14 @@ class Parser:
             error = self.NO_ERROR
         elif error == self.devices.INVALID_QUALIFIER:
             error = self.INVALID_RANGE
+        elif error == self.devices.DEVICE_PRESENT:
+            error = self.REPEATED_DEVICE
         # Handle CLOCK device
         if device_type_id == self.scanner.CLOCK_ID:
             if self.symbol.type != self.scanner.NUMBER:
                 error = self.NO_PERIOD
+                if self.symbol.type == self.scanner.COMMA:
+                    return error
             else:
                 error = self.devices.make_device(
                     device_id, self.devices.CLOCK, device_property=self.symbol.id)
@@ -179,10 +203,14 @@ class Parser:
                     error = self.NO_ERROR
                 elif error == self.devices.INVALID_QUALIFIER:
                     error = self.CLOCK_PERIOD_ZERO
+                elif error == self.devices.DEVICE_PRESENT:
+                    error = self.REPEATED_DEVICE
         # Handle SIGGEN device
         if device_type_id == self.scanner.SIGGEN_ID:
             if self.symbol.type != self.scanner.NUMBER:
                 error = self.NO_WAVEFORM
+                if self.symbol.type == self.scanner.COMMA:
+                    return error
             else:
                 error = self.devices.make_device(
                     device_id, self.devices.SIGGEN, device_property=self.symbol.id)
@@ -192,20 +220,29 @@ class Parser:
                     error = self.NO_ERROR
                 elif error == self.devices.INVALID_QUALIFIER:
                     error = self.NONBINARY_WAVEFORM
+                elif error == self.devices.DEVICE_PRESENT:
+                    error = self.REPEATED_DEVICE
         # Handle SWITCH device
         elif device_type_id == self.scanner.SWITCH_ID:
-            error = self.devices.make_device(
-                device_id, self.devices.SWITCH, device_property=self.symbol.id)
-            if error in [
-                self.devices.NO_QUALIFIER,
-                self.devices.INVALID_QUALIFIER
-            ]:
-                if error == self.devices.NO_QUALIFIER:  
-                    error = self.NOT_BIT
-                    return error
+            if self.symbol.type != self.scanner.NUMBER:
                 error = self.NOT_BIT
-            elif error == self.devices.NO_ERROR:
-                error = self.NO_ERROR
+                if self.symbol.type == self.scanner.COMMA:
+                    return error
+            else:
+                error = self.devices.make_device(
+                    device_id, self.devices.SWITCH, device_property=self.symbol.id)
+                if error in [
+                    self.devices.NO_QUALIFIER,
+                    self.devices.INVALID_QUALIFIER
+                ]:
+                    if error == self.devices.NO_QUALIFIER:  
+                        error = self.NOT_BIT
+                        return error
+                    error = self.NOT_BIT
+                elif error == self.devices.NO_ERROR:
+                    error = self.NO_ERROR
+                elif error == self.devices.DEVICE_PRESENT:
+                    error = self.REPEATED_DEVICE
         # Default to no error if error is still None
         if error is None:
             error = self.NO_ERROR
