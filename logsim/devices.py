@@ -291,7 +291,6 @@ class Devices:
                     random.randrange(device.clock_half_period)
             elif device.device_kind == self.SIGGEN:
                 siggen = self.get_device(device.device_id)
-                print(str(siggen.siggen_waveform)[0])
                 if str(siggen.siggen_waveform)[0] == '1':
                     siggen_signal = self.HIGH
                 elif str(siggen.siggen_waveform)[0] == '0':
@@ -336,7 +335,7 @@ class Devices:
             # Device property is the binary waveform (a sequence of bits)
             if device_property is None:
                 error_type = self.NO_QUALIFIER
-            elif set(list(device_property)).issubset({'0','1'}):
+            elif set(device_property).issubset({'0','1'}):
                 self.make_siggen(device_id, device_property)
                 error_type = self.NO_ERROR
             else:

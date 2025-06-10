@@ -1,10 +1,17 @@
+# switch 01 should not work
+
 DEVICES D1:DTYPE,
-        D2:DTYPE,
+        D2:DTYPE, 
         N1:NAND 2,
-        SI1:CLOCK 0,
-        S1:SWITCH 0,
-        S2:SWITCH 1,
-        S3:SWITCH 0 ;
+        
+        S1:SWITCH 01,
+        S2:SWITCH ,
+        S3:SWITCH a,
+        S4:SWITCH 2,
+        S5:SWITCH 1a,
+        S6:SWITCH 0,
+        S7:SWITCH 1,
+        SI1:SIGGEN 10100;
 
 /* connect inputs and outputs */
 CONNECT S1 > D1.SET,

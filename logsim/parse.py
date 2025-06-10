@@ -168,24 +168,30 @@ class Parser:
             error = self.INVALID_RANGE
         # Handle CLOCK device
         if device_type_id == self.scanner.CLOCK_ID:
-            error = self.devices.make_device(
-                device_id, self.devices.CLOCK, device_property=self.symbol.id)
-            if error == self.devices.NO_QUALIFIER:
+            if self.symbol.type != self.scanner.NUMBER:
                 error = self.NO_PERIOD
-            elif error == self.devices.NO_ERROR:
-                error = self.NO_ERROR
-            elif error == self.devices.INVALID_QUALIFIER:
-                error = self.CLOCK_PERIOD_ZERO
+            else:
+                error = self.devices.make_device(
+                    device_id, self.devices.CLOCK, device_property=self.symbol.id)
+                if error == self.devices.NO_QUALIFIER:
+                    error = self.NO_PERIOD
+                elif error == self.devices.NO_ERROR:
+                    error = self.NO_ERROR
+                elif error == self.devices.INVALID_QUALIFIER:
+                    error = self.CLOCK_PERIOD_ZERO
         # Handle SIGGEN device
         if device_type_id == self.scanner.SIGGEN_ID:
-            error = self.devices.make_device(
-                device_id, self.devices.SIGGEN, device_property=self.symbol.id)
-            if error == self.devices.NO_QUALIFIER:
+            if self.symbol.type != self.scanner.NUMBER:
                 error = self.NO_WAVEFORM
-            elif error == self.devices.NO_ERROR:
-                error = self.NO_ERROR
-            elif error == self.devices.INVALID_QUALIFIER:
-                error = self.NONBINARY_WAVEFORM
+            else:
+                error = self.devices.make_device(
+                    device_id, self.devices.SIGGEN, device_property=self.symbol.id)
+                if error == self.devices.NO_QUALIFIER:
+                    error = self.NO_WAVEFORM
+                elif error == self.devices.NO_ERROR:
+                    error = self.NO_ERROR
+                elif error == self.devices.INVALID_QUALIFIER:
+                    error = self.NONBINARY_WAVEFORM
         # Handle SWITCH device
         elif device_type_id == self.scanner.SWITCH_ID:
             error = self.devices.make_device(

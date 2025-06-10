@@ -28,9 +28,6 @@ class Symbol:
         self.id = None
         self.line_number = 1
         self.position = 1
-        self.siggen_1 = False
-        self.siggen_2 = False
-
 
 class Scanner:
     """Read circuit definition file and translate the characters into symbols.
@@ -86,9 +83,6 @@ class Scanner:
 
         self.position = 0
         self.line_number = 1
-
-        self.siggen_1 = False
-        self.siggen_2 = False
 
         self.FILE = open(path, 'r')
 
@@ -174,9 +168,6 @@ class Scanner:
         symbol.position = self.position
         symbol.line_number = self.line_number
 
-        symbol.siggen_1 = self.siggen_1
-        symbol.siggen_2 = self.siggen_2
-
         if self.current_character.isalpha():  # name
             name_string = self.get_name()
             self.name_string = name_string
@@ -188,19 +179,13 @@ class Scanner:
                 symbol.type = self.NAME # name is a user-defined name
             [symbol.id] = self.names.lookup([name_string])
 
-            if self.name_string == "SIGGEN":
-                print('I have identified a SIGGEN device')
-                self.siggen_1 = True
-                self.siggen_2 = True
-
         elif self.current_character.isdigit():  # number
-            print('Name string:',self.name_string)
             if self.name_string == "SIGGEN":
-                print('I have identified a SIGGEN device2')
                 symbol.id = self.get_waveform()
+            elif self.name_string == "SWITCH": 
+                symbol.id = self.get_bit()
             else:
                 symbol.id = self.get_number()
-            print ('This is symbol.id:',symbol.id)
             symbol.type = self.NUMBER
 
         elif self.current_character == ";": # end of executable
@@ -230,12 +215,6 @@ class Scanner:
         else:  # not a valid character
             self.advance()
 
-        if symbol.siggen_1 and symbol.siggen_1:
-            symbol.siggen_1 = False
-        
-        if not symbol.siggen_2 and symbol.siggen_1:
-            symbol.siggen_1 = False
-
         return symbol
 
     def get_name(self):
@@ -251,22 +230,6 @@ class Scanner:
             self.advance()
 
         return name_str
-
-    def get_number2(self):
-        """Seek the next number in input_file.
-
-        Return the number (or None) and the next non-numeric character.
-        """
-        num_str = ''
-
-        while self.current_character.isdigit():
-            num_str += self.current_character
-            self.advance()
-        
-        if self.siggen_1:
-            num_str = int(num_str)
-
-        return num_str
     
     def get_number(self):
         """Seek the next number in input_file.
@@ -289,6 +252,20 @@ class Scanner:
             self.advance()
 
         return num_str
+    
+    def get_bit(self):
+        """Seek the next bit in input_file.
+
+        Return the bit (or None) and the next non-numeric character.
+        """
+        bit_str = ''
+
+        while self.current_character.isdigit():
+            bit_str += self.current_character
+            self.advance()
+        if len(bit_str) > 1:
+            return 2
+        return int(bit_str)
     
     def advance(self):
         """Move to next character."""
