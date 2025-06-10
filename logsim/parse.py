@@ -48,10 +48,10 @@ class Parser:
             self.DEVICE_ABSENT, self.INPUT_CONNECTED, self.INPUT_TO_INPUT,
             self.PORT_ABSENT, self.OUTPUT_TO_OUTPUT, self.NOT_CONNECTED,
             self.INVALID_PORT, self.INVALID_PORT_DTYPE,
-            self.INVALID_PORT_XOR, self.NOT_I_PORT,
-            self.PORT_OUT_RANGE, self.NOT_END, self.REPEATED_MONITOR, 
-            self.REPEATED_DEVICE, self.MISSED_SEMICOLON
-        ] = range(30)
+            self.INVALID_PORT_XOR, self.NOT_I_PORT, self.PORT_OUT_RANGE, 
+            self.NOT_END, self.REPEATED_MONITOR, self.REPEATED_DEVICE, 
+            self.MISSED_SEMICOLON, self.NONBINARY_WAVEFORM
+        ] = range(31)
         # Device types that require dot notation for ports
         self.dot_signals = {
             "IN": [self.devices.D_TYPE],
@@ -172,6 +172,16 @@ class Parser:
                 error = self.NO_ERROR
             elif error == self.devices.INVALID_QUALIFIER:
                 error = self.CLOCK_PERIOD_ZERO
+        # Handle SIGGEN device
+        if device_type_id == self.scanner.SIGGEN_ID:
+            error = self.devices.make_device(
+                device_id, self.devices.SIGGEN, device_property=self.symbol.id)
+            if error == self.devices.NO_QUALIFIER:
+                error = self.NO_NUMBER
+            elif error == self.devices.NO_ERROR:
+                error = self.NO_ERROR
+            elif error == self.devices.INVALID_QUALIFIER:
+                error = self.NONBINARY_WAVEFORM
         # Handle SWITCH device
         elif device_type_id == self.scanner.SWITCH_ID:
             error = self.devices.make_device(
@@ -262,7 +272,8 @@ class Parser:
                 if self.symbol.type == self.scanner.DOT:
                     if device_type_id in [
                         self.devices.SWITCH,
-                        self.devices.CLOCK
+                        self.devices.CLOCK, 
+                        self.devices.SIGGEN
                     ]:
                         return self.DOT
                     else:
@@ -296,7 +307,8 @@ class Parser:
             if self.devices.get_device(device_id) is None:
                 return self.DEVICE_ABSENT
             device_type_id = self.devices.get_device(device_id).device_kind
-            if device_type_id in [self.devices.SWITCH, self.devices.CLOCK]:
+            if device_type_id in [self.devices.SWITCH, self.devices.CLOCK, 
+                                  self.devices.SIGGEN]:
                 return self.INVALID_CONNECTION_SC
             self.symbol = self.scanner.get_symbol()
             if self.symbol.type == self.scanner.DOT:
@@ -524,7 +536,7 @@ class Parser:
         elif error_type == self.INVALID_RANGE:
             print("Expected number between 1 and 16 inclusive")
         elif error_type == self.INVALID_CONNECTION_SC:
-            print("Connection should not be made to SWITCH or CLOCK")
+            print("Connection should not be made to SWITCH, CLOCK or SIGGEN")
         elif error_type == self.DEVICE_ABSENT:
             print("Device not found")  # tested
         elif error_type == self.REPEATED_DEVICE:
@@ -552,7 +564,9 @@ class Parser:
         elif error_type == self.REPEATED_MONITOR:
             print("Signal cannot be monitored more than once")
         elif error_type == self.CLOCK_PERIOD_ZERO:
-            print("clock period cannot be zero")
+            print("Clock period cannot be zero")
+        elif error_type == self.NONBINARY_WAVEFORM:
+            print("Siggen waveform must only consist of bits")
         else:
             print("Unknown error")
         print(f"LINE {self.symbol.line_number}:")

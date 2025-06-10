@@ -84,7 +84,7 @@ def main(arg_list):
             app = wx.App()
             locale = wx.Locale()
             lang = wx.LANGUAGE_ENGLISH  # Default
-            if language in ["es_ES.utf8", "es_ES.UTF-8", "es_ES"]:
+            if language in ["es_ES.utf8", "es_ES.UTF-8", "es_ES", 'spanish']:
                 lang = wx.LANGUAGE_SPANISH
             elif language in ["zh_CN.utf8", "zh_CN.UTF-8", "zh_CN"]:
                 lang = wx.LANGUAGE_CHINESE_SIMPLIFIED

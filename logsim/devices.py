@@ -36,6 +36,7 @@ class Device:
 
         self.device_kind = None
         self.clock_half_period = None
+        self.siggen_waveform = None
         self.clock_counter = None
         self.switch_state = None
         self.dtype_memory = None
@@ -83,6 +84,9 @@ class Devices:
     make_clock(self, device_id, clock_half_period): Makes a clock device with
                                                     the specified half period.
 
+    make_siggen(self, device_id, siggen_waveform): Makes a siggen device with
+                                            the specified binary waveform.
+
     make_gate(self, device_id, device_kind, no_of_inputs): Makes logic gates
                                         with the specified number of inputs.
 
@@ -101,7 +105,7 @@ class Devices:
         self.devices_list = []
 
         gate_strings = ["AND", "OR", "NAND", "NOR", "XOR"]
-        device_strings = ["CLOCK", "SWITCH", "DTYPE"]
+        device_strings = ["CLOCK", "SWITCH", "DTYPE", "SIGGEN"]
         dtype_inputs = ["CLK", "SET", "CLEAR", "DATA"]
         dtype_outputs = ["Q", "QBAR"]
 
@@ -114,7 +118,7 @@ class Devices:
         self.gate_types = [self.AND, self.OR, self.NAND, self.NOR,
                            self.XOR] = self.names.lookup(gate_strings)
         self.device_types = [self.CLOCK, self.SWITCH,
-                             self.D_TYPE] = self.names.lookup(device_strings)
+                             self.D_TYPE, self.SIGGEN] = self.names.lookup(device_strings)
         self.dtype_input_ids = [self.CLK_ID, self.SET_ID, self.CLEAR_ID,
                                 self.DATA_ID] = self.names.lookup(dtype_inputs)
         self.dtype_output_ids = [
@@ -237,6 +241,18 @@ class Devices:
         device.clock_half_period = clock_half_period
         self.cold_startup()  # clock initialised to a random point in its cycle
 
+    def make_siggen(self, device_id, siggen_waveform):
+        """Make a siggen device with the user's specified binary waveform.
+
+        siggen_waveform is a bit string of any length. It generates an 
+        arbitrary (but periodic) waveform bonary waveform instead of a 
+        regular square wave.
+        """
+        self.add_device(device_id, self.SIGGEN)
+        device = self.get_device(device_id)
+        device.siggen_waveform = siggen_waveform
+        self.cold_startup()  # clock initialised to a random point in its cycle
+
     def make_gate(self, device_id, device_kind, no_of_inputs):
         """Make logic gates with the specified number of inputs."""
         self.add_device(device_id, device_kind)
@@ -273,6 +289,19 @@ class Devices:
                 # Initialise it to a random point in its cycle.
                 device.clock_counter = \
                     random.randrange(device.clock_half_period)
+            elif device.device_kind == self.SIGGEN:
+                siggen = self.get_device(device.device_id)
+                print(str(siggen.siggen_waveform)[0])
+                if str(siggen.siggen_waveform)[0] == '1':
+                    siggen_signal = self.HIGH
+                elif str(siggen.siggen_waveform)[0] == '0':
+                    siggen_signal = self.LOW
+                else:
+                    print ('cold setup for siggen not working!')
+                self.add_output(device.device_id, output_id=None,
+                                signal=siggen_signal)
+                # Initialise it to a random point in its cycle.
+                device.siggen_counter = 0
 
     def make_device(self, device_id, device_kind, device_property=None):
         """Create the specified device.
@@ -301,6 +330,17 @@ class Devices:
                 error_type = self.INVALID_QUALIFIER
             else:
                 self.make_clock(device_id, device_property)
+                error_type = self.NO_ERROR
+
+        elif device_kind == self.SIGGEN:
+            # Device property is the binary waveform (a sequence of bits)
+            if device_property is None:
+                error_type = self.NO_QUALIFIER
+            if str(device_property) >= '1'*len(str(device_property)):
+                print ('this is device property:', str(device_property))
+                error_type = self.INVALID_QUALIFIER
+            else:
+                self.make_siggen(device_id, device_property)
                 error_type = self.NO_ERROR
 
         elif device_kind in self.gate_types:
