@@ -82,13 +82,26 @@ def main(arg_list):
             print("Current LANG:", language)
             # Initialise an instance of the gui.Gui() class
             app = wx.App()
-            if language == "es_ES.utf8":
-                locale = wx.Locale(wx.LANGUAGE_SPANISH)
-                locale.AddCatalog("locale")
-            else:
-                locale = wx.Locale(wx.LANGUAGE_ENGLISH_UK)
-                locale.AddCatalog("locale")
-            gui = Gui("Logic Simulator", path, names, devices, network,
+            locale = wx.Locale()
+            lang = wx.LANGUAGE_ENGLISH  # Default
+            if language in ["es_ES.utf8", "es_ES.UTF-8", "es_ES"]:
+                lang = wx.LANGUAGE_SPANISH
+            elif language in ["zh_CN.utf8", "zh_CN.UTF-8", "zh_CN"]:
+                lang = wx.LANGUAGE_CHINESE_SIMPLIFIED
+            elif language in ["ta_IN.utf8", "ta_IN.UTF-8", "ta_IN"]:
+                lang = wx.LANGUAGE_TAMIL
+            elif language in ["yo_NG.utf8", "yo_NG.UTF-8", "yo_NG"]:
+                lang = wx.LANGUAGE_YORUBA
+            elif language in ["kn_IN.utf8", "kn_IN.UTF-8", "kn_IN"]:
+                lang = wx.LANGUAGE_KANNADA
+            # Add more languages as needed
+
+            locale.Init(lang)
+            # Set the path to your locale directory
+            locale_dir = os.path.join(os.path.dirname(__file__), "locale")
+            locale.AddCatalogLookupPathPrefix(locale_dir)
+            locale.AddCatalog("messages")
+            gui = Gui(wx.GetTranslation("Logic Simulator"), path, names, devices, network,
                       monitors, language)
             gui.Show(True)
             app.MainLoop()
