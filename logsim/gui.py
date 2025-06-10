@@ -314,7 +314,9 @@ class MyGLCanvas(wxcanvas.GLCanvas):
         
         for i, signal_name in enumerate(self.signal_data.keys()):
             y = y_offset + (i * self.signal_height) + (self.signal_height // 2)
-            self.render_text(signal_name, 10, y)
+            print("Monitor name position placed")
+            x = -self.pan_x / self.zoom + 10
+            self.render_text(signal_name, x, y)
 
     def on_paint(self, event):
         """Handle the paint event."""
@@ -650,7 +652,7 @@ class CustomListCtrl(wx.ListCtrl):
                         new_state == parent.devices.HIGH,
                         switch_theme
                     )
-                    parent.SetStatusText(wx.GetTranslation("Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}").format(switch_name=switch_name))
+                    parent.SetStatusText(wx.GetTranslation("Toggled {switch_name} to {state}").format(switch_name=switch_name, state=('HIGH' if new_state == parent.devices.HIGH else 'LOW')))
 
                     # Force a refresh to update the switches
                     self.Refresh()
@@ -691,7 +693,7 @@ class CustomListCtrl(wx.ListCtrl):
                     new_state == parent.devices.HIGH,
                     switch_theme
                 )
-                parent.SetStatusText(wx.GetTranslation("[Activated] Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}").format(switch_name=switch_name))
+                parent.SetStatusText(wx.GetTranslation("[Activated] Toggled {switch_name} to {state}").format(switch_name=switch_name, state=('HIGH' if new_state == parent.devices.HIGH else 'LOW')))
                 self.Refresh()
                 if parent.network.execute_network():
                     parent.update_display()
