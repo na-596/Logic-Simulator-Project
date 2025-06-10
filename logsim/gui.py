@@ -1297,7 +1297,7 @@ class Gui(wx.Frame):
                 
             return True
         except Exception as e:
-            wx.MessageBox(wx.GetTranslation("Error during simulation: {str(e)}".format(str(e))), 
+            wx.MessageBox(wx.GetTranslation("Error during simulation: {x}".format(x=str(e))), 
                          wx.GetTranslation("Simulation Error"),
                          wx.OK | wx.ICON_ERROR)
             return False
