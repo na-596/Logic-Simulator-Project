@@ -9,6 +9,7 @@ MyGLCanvas - handles all canvas drawing operations.
 Gui - configures the main window and all the widgets.
 """
 import wx
+import wx.grid as gridlib
 import wx.glcanvas as wxcanvas
 from OpenGL import GL, GLUT, GLU
 import numpy as np
@@ -314,7 +315,6 @@ class MyGLCanvas(wxcanvas.GLCanvas):
         
         for i, signal_name in enumerate(self.signal_data.keys()):
             y = y_offset + (i * self.signal_height) + (self.signal_height // 2)
-            print("Monitor name position placed")
             x = -self.pan_x / self.zoom + 10
             self.render_text(signal_name, x, y)
 
@@ -704,51 +704,60 @@ class CustomListCtrl(wx.ListCtrl):
         event.Skip()
 
 
-class SwitchRenderer(wx.ItemAttr):
-    """Custom renderer for switch state column to show a toggle switch."""
+class SwitchRenderer(wx.grid.GridCellRenderer):
+    """Cross-platform text + oval switch renderer using the original DrawItem signature."""
     def __init__(self, is_on=False, theme=None):
-        super().__init__()
         self.is_on = is_on
-        self.theme = theme or {
-            'background': wx.Colour(240, 240, 240),
-            'switch_on': wx.Colour(0, 184, 148),  # Green when ON
-            'switch_off': wx.Colour(200, 200, 200),  # Grey when OFF
-            'switch_bg': wx.Colour(255, 255, 255)  # White background
+        # Use the provided theme, but ensure required keys exist
+        default_theme = {
+            'on_color': wx.Colour(0, 200, 0),       # Green for HIGH
+            'off_color': wx.Colour(200, 0, 0),      # Red for LOW
+            'text_color': wx.Colour(255, 255, 255), # White text
+            'corner_radius': 20                     # Radius for rounded corners
         }
+        if theme:
+            # Support old key names
+            if 'switch_on' in theme and 'switch_off' in theme:
+                theme = {
+                    'on_color': theme.get('switch_on', default_theme['on_color']),
+                    'off_color': theme.get('switch_off', default_theme['off_color']),
+                    'text_color': default_theme['text_color'],  # Use default if not provided
+                    'corner_radius': theme.get('corner_radius', default_theme['corner_radius'])
+                }
+        self.theme = theme or default_theme
 
     def DrawItem(self, dc, rect, item):
-        """Draw the toggle switch."""
-        # Set up colors based on state
-        switch_color = self.theme['switch_on'] if self.is_on else self.theme['switch_off']
+        """Draw HIGH or LOW with a colored oval switch, matching the expected method signature."""
+        is_on = self.is_on
 
-        # Calculate switch dimensions - make it slightly larger
-        switch_width = min(48, rect.width - 8)  # Max width of 48px, with 4px padding on each side
-        switch_height = min(24, rect.height - 8)  # Max height of 24px, with 4px padding
+        text = "HIGH" if is_on else "LOW"
+        switch_color = self.theme['on_color'] if is_on else self.theme['off_color']
+        radius = self.theme['corner_radius']
 
-        # Center the switch in the cell
-        x = rect.x + (rect.width - switch_width) // 2
-        y = rect.y + (rect.height - switch_height) // 2
+        # Create a rounded rectangle (oval-like shape) that fills most of the cell
+        padding = 4  # Padding around the switch
+        switch_rect = wx.Rect(
+            rect.x + padding,
+            rect.y + padding,
+            rect.width - 2 * padding,
+            rect.height - 2 * padding
+        )
 
-        # Draw switch background (rounded rectangle) with thicker border
-        dc.SetPen(wx.Pen(switch_color, 2))  # Thicker border
+        # Draw the rounded rectangle
         dc.SetBrush(wx.Brush(switch_color))
-        dc.DrawRoundedRectangle(x, y, switch_width, switch_height, switch_height // 2)
+        dc.SetPen(wx.Pen(switch_color))
+        dc.DrawRoundedRectangle(switch_rect, radius)
 
-        # Draw the toggle circle - slightly larger
-        circle_size = switch_height - 6  # Slightly smaller than height for padding
-        circle_x = x + 3 + (switch_width - circle_size - 6) * (1 if self.is_on else 0)
-        circle_y = y + 3
+        # Draw centered text
+        dc.SetTextForeground(self.theme['text_color'])
+        text_width, text_height = dc.GetTextExtent(text)
+        text_x = rect.x + (rect.width - text_width) // 2
+        text_y = rect.y + (rect.height - text_height) // 2
+        dc.DrawText(text, text_x, text_y)
 
-        # Add a subtle shadow effect
-        shadow_color = wx.Colour(0, 0, 0, 30)  # Semi-transparent black
-        dc.SetPen(wx.Pen(shadow_color, 1))
-        dc.SetBrush(wx.Brush(shadow_color))
-        dc.DrawCircle(circle_x + circle_size // 2 + 1, circle_y + circle_size // 2 + 1, circle_size // 2)
-
-        # Draw the main circle
-        dc.SetPen(wx.Pen(self.theme['switch_bg'], 2))  # Thicker border for the circle
-        dc.SetBrush(wx.Brush(self.theme['switch_bg']))
-        dc.DrawCircle(circle_x + circle_size // 2, circle_y + circle_size // 2, circle_size // 2)
+    def toggle(self):
+        """Optional helper to switch the state."""
+        self.is_on = not self.is_on
 
 class Gui(wx.Frame):
     """Configure the main window and all the widgets.
@@ -1556,7 +1565,7 @@ class Gui(wx.Frame):
             )
             return
         # Ask for confirmation
-        print
+
         dlg = wx.MessageDialog(
                 dialog,
                 wx.GetTranslation("Add all {x} available signals?").format(x=len(non_monitored)),
