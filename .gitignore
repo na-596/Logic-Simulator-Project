@@ -1,0 +1,4 @@
+logsim/__pycache__/
+logsim/.pytest_cache/
+.vscode/
+.idea/

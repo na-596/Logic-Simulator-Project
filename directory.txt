@@ -1,0 +1,71 @@
+ .
+├── prelim/
+├── README.md
+├── .gitignore
+├── logsim/
+│   ├── test_parser.py
+│   ├── test_parser/ (e.g. test_print_error_devices.txt, ...)
+│   ├── test_maintenance.py
+│   ├── test_maintenance/ (e.g. siggen_flip_flop_incorrect.txt, ...)
+│   ├── test_scanner.py
+│   ├── test_scanner/ (e.g. test_print_error.txt, ...)
+│   ├── test_names.py, test_network.py, test_monitors.py, test_devices.py
+│   ├── locale/
+│   │   ├── ta_IN/LC_MESSAGES/{messages.po, messages.mo}
+│   │   └── zh_CN/... 
+│   ├── logsim.py
+│   ├── EBNF/ (e.g. EBNFv3.txt, ...)
+│   ├── scanner.py, names.py, parse.py, devices.py, network.py, monitors.py, userint.py, gui.py
+│   ├── clock_flip_flop.txt, ...
+
+
+
+
+
+
+.
+ |-prelim
+ |-README.md
+ |-.gitignore
+ |-logsim
+ | |
+ | |-test_parser.py
+ | |-test_parser
+ | | |-test_print_error_devices.txt
+ | | |...
+ | |-test_maintenance.py
+ | |-test_maintenance
+ | | |-siggen_flip_flop_incorrect.txt
+ | | |...
+ | |-test_scanner.py
+ | |-test_scanner
+ | | |-test_print_error.txt
+ | | |...
+ | |-test_names.py
+ | |-test_network.py
+ | |-test_monitors.py
+ | |-test_devices.py
+ | |
+ | |-locale
+ | | |-ta_IN
+ | | | |-LC_MESSAGES
+ | | | | |-messages.po
+ | | | | |-messages.mo
+ | | |-zh_CN
+ | | |...
+ | |-logsim.py
+ | |-EBNF
+ | | |-EBNFv3.txt
+ | | |...
+ | |-scanner.py
+ | |-names.py
+ | |-parse.py
+ | |-devices.py
+ | |-network.py
+ | |-monitors.py
+ | |-userint.py
+ | |-gui.py
+ | |
+ | |-clock_flip_flop.txt
+ | |...
+
