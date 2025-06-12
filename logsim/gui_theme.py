@@ -1099,6 +1099,7 @@ class Gui(wx.Frame):
             self.all_off_btn.Disable()
             self.all_on_btn.Disable()
             self.toggle_switch_btn.Disable()
+            self.switch_list.Disable()
             
             # Start the simulation timer with current speed setting
             self.simulation_timer.Start(self.speed_settings[self.current_speed])
@@ -1137,6 +1138,7 @@ class Gui(wx.Frame):
         self.all_off_btn.Enable()
         self.all_on_btn.Enable()
         self.toggle_switch_btn.Enable()
+        self.switch_list.Enable()
 
 
         self.SetStatusText(wx.GetTranslation("Simulation reset"))
