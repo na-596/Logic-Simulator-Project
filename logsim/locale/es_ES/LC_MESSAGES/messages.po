@@ -326,3 +326,37 @@ msgstr "Modo oscuro"
 
 msgid "&Theme"
 msgstr "&Tema"
+
+
+msgid "Signal:"
+msgstr "Señal:"
+
+msgid "Add All"
+msgstr "Agregar Todo"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Add Monitor"
+msgstr "Agregar Monitor"
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "Toggle Selected"
+msgstr "Alternar Seleccionado"
+
+msgid "∞ Continuous"
+msgstr "∞ Continuo"
+
+msgid "Add all {x} available signals?"
+msgstr "¿Agregar todas las {x} señales disponibles?"
+
+msgid "HIGH"
+msgstr "Alto"
+
+msgid "LOW"
+msgstr "Bajo"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "Se cambió {switch_name} a {new_state}"

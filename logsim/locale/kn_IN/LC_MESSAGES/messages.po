@@ -327,3 +327,37 @@ msgstr "ಡಾರ್ಕ್ ಮೋಡ್"
 
 msgid "&Theme"
 msgstr "&ಥೀಮ್"
+
+
+msgid "Signal:"
+msgstr "ಸಂकेत:"
+
+msgid "Add All"
+msgstr "ಎಲ್ಲಾ ಸೇರಿಸಿ"
+
+msgid "Cancel"
+msgstr "ರದ್ದು ಮಾಡಿ"
+
+msgid "Add Monitor"
+msgstr "ಮೋನಿಟರ್ ಸೇರಿಸಿ"
+
+msgid "Add"
+msgstr "ಸೇರಿಸಿ"
+
+msgid "Toggle Selected"
+msgstr "ತೇರುವ ಆಯ್ಕೆ"
+
+msgid "∞ Continuous"
+msgstr "∞ ನಿರಂತರ"
+
+msgid "Add all {x} available signals?"
+msgstr "ಎಲ್ಲಾ {x} ಲಭ್ಯವಿರುವ ಸಂಕೇತಗಳನ್ನು ಸೇರಿಸುವುದೆ?"
+
+msgid "HIGH"
+msgstr "ಹೈ"
+
+msgid "LOW"
+msgstr "ಲೋ"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "{switch_name} ಅನ್ನು {new_state} ಗೆ ತಿರುಗಿಸಲಾಗಿದೆ"

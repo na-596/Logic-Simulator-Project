@@ -248,3 +248,37 @@ msgstr "Ipo Dúdú"
 
 msgid "&Theme"
 msgstr "&Àkòrí"
+
+
+msgid "Signal:"
+msgstr "Àmì:"
+
+msgid "Add All"
+msgstr "Fikun gbogbo"
+
+msgid "Cancel"
+msgstr "Fagilee"
+
+msgid "Add Monitor"
+msgstr "Fikun Monitor"
+
+msgid "Add"
+msgstr "Fikun"
+
+msgid "Toggle Selected"
+msgstr "Yípadà Tí a Yan"
+
+msgid "∞ Continuous"
+msgstr "∞ Tẹsiwaju"
+
+msgid "Add all {x} available signals?"
+msgstr "Ṣé ká fi gbogbo àmì ({x}) tó wà kún un?"
+
+msgid "HIGH"
+msgstr "GIGA"
+
+msgid "LOW"
+msgstr "KÉRÉ"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "A yí {switch_name} padà sí {new_state}"
