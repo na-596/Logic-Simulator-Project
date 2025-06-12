@@ -1699,7 +1699,9 @@ class Gui(wx.Frame):
             # Get all monitors before removing them
             monitor_count = len(self.monitors.monitors_dictionary)
             # Remove all monitors
-            for (device_id, output_id) in list(self.monitors.monitors_dictionary.keys()):
+            for (device_id, output_id) in list(
+                self.monitors.monitors_dictionary.keys()
+            ):
                 self.monitors.remove_monitor(device_id, output_id)
             # Update display after all monitors are removed
             self.update_monitor_list(show_states=self.is_running)
@@ -1851,7 +1853,9 @@ class Gui(wx.Frame):
         # Apply to main window and panel backgrounds
         self.SetBackgroundColour(self.current_theme['background'])
         # Apply to control panel and its background
-        self.control_panel.SetBackgroundColour(self.current_theme['background'])
+        self.control_panel.SetBackgroundColour(
+            self.current_theme['background']
+        )
         # Apply to buttons with consistent white text
         button_text_color = wx.Colour(255, 255, 255)
         # Main control buttons
