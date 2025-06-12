@@ -23,6 +23,49 @@ from parse import Parser
 
 import os
 
+import platform
+import subprocess
+def is_dark_mode():
+    system = platform.system()
+
+    if system == "Windows":
+        try:
+            import winreg
+            key = winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER,
+                r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+            )
+            value, _ = winreg.QueryValueEx(key, "AppsUseLightTheme")
+            return value == 0  # 0 = Dark, 1 = Light
+        except Exception:
+            return False  # Default to light if undetectable
+
+    elif system == "Darwin":  # macOS
+        try:
+            result = subprocess.run(
+                ["defaults", "read", "-g", "AppleInterfaceStyle"],
+                capture_output=True,
+                text=True
+            )
+            return result.stdout.strip().lower() == "dark"
+        except Exception:
+            return False  # Default to light if key doesn't exist
+
+    elif system == "Linux":
+        try:
+            result = subprocess.run(
+                ["gsettings", "get", "org.gnome.desktop.interface", "gtk-theme"],
+                capture_output=True,
+                text=True
+            )
+            theme = result.stdout.strip().strip("'").lower()
+            print(theme)
+            if "adwaita" in theme or "dark" in theme:
+                return True
+        except Exception:
+            return False  # Default to light if unknown
+
+    return False  # Default fallback
 
 class MyGLCanvas(wxcanvas.GLCanvas):
     """Handle all drawing operations.
@@ -710,6 +753,14 @@ class Gui(wx.Frame):
             (0.50, 0.20, 1.00),  # Neon Indigo (a deep, electric blue-purple)
             (0.80, 0.00, 1.00),  # Neon Violet (a radiant, intense purple)
         ]
+
+        # Automatically set theme based on system appearance
+        if is_dark_mode():
+            print("DARK MODE NOW")
+            self.current_theme = self.dark_theme
+        else:
+            print("LIGHT MODE NOW")
+            self.current_theme = self.light_theme
         
         # Configure the file menu
         fileMenu = wx.Menu()
@@ -745,7 +796,10 @@ class Gui(wx.Frame):
         
         # Canvas for drawing signals
         self.canvas = MyGLCanvas(main_panel, devices, monitors)
-        self.canvas.signal_colors = self.light_signal_colors  # Set initial signal colors
+        if is_dark_mode():
+            self.canvas_signal_colors = self.dark_signal_colors
+        else:
+            self.canvas_signal_colors = self.light_signal_colors
         
         # Create bold Arial font for box titles
         title_font = wx.Font(9, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
@@ -1042,6 +1096,10 @@ class Gui(wx.Frame):
             self.reset_button.Disable()
             self.continuous_button.Disable()
             self.cycles_spin.Disable()
+            self.all_off_btn.Disable()
+            self.all_on_btn.Disable()
+            self.toggle_switch_btn.Disable()
+            self.switch_list.Disable()
             
             # Start the simulation timer with current speed setting
             self.simulation_timer.Start(self.speed_settings[self.current_speed])
@@ -1076,6 +1134,12 @@ class Gui(wx.Frame):
         self.canvas.pan_x = 0
         self.canvas.init = False
         self.canvas.Refresh()
+
+        self.all_off_btn.Enable()
+        self.all_on_btn.Enable()
+        self.toggle_switch_btn.Enable()
+        self.switch_list.Enable()
+
 
         self.SetStatusText(wx.GetTranslation("Simulation reset"))
         
