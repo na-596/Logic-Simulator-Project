@@ -271,3 +271,36 @@ msgstr "深色模式"
 
 msgid "&Theme"
 msgstr "主题(&T)"
+
+msgid "Signal:"
+msgstr "信号："
+
+msgid "Add All"
+msgstr "全部添加"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Add Monitor"
+msgstr "添加监视器"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Toggle Selected"
+msgstr "切换选中"
+
+msgid "∞ Continuous"
+msgstr "∞ 连续"
+
+msgid "Add all {x} available signals?"
+msgstr "是否添加全部 {x} 个可用信号？"
+
+msgid "HIGH"
+msgstr "高电平"
+
+msgid "LOW"
+msgstr "低电平"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "已切换 {switch_name} 为 {new_state}"

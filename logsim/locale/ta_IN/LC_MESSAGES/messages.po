@@ -325,3 +325,37 @@ msgstr "இருள் பயன்முறை"
 
 msgid "&Theme"
 msgstr "&தீம்"
+
+
+msgid "Signal:"
+msgstr "சிக்னல்:"
+
+msgid "Add All"
+msgstr "அனைத்தையும் சேர்க்க"
+
+msgid "Cancel"
+msgstr "ரத்து செய்"
+
+msgid "Add Monitor"
+msgstr "மாணிட்டர் சேர்க்க"
+
+msgid "Add"
+msgstr "சேர்க்க"
+
+msgid "Toggle Selected"
+msgstr "தேர்ந்தெடுக்கப்பட்டதை மாற்று"
+
+msgid "∞ Continuous"
+msgstr "∞ தொடர்ச்சி"
+
+msgid "Add all {x} available signals?"
+msgstr "{x} கிடைக்கும் சிக்னல்களையும் சேர்க்கவா?"
+
+msgid "HIGH"
+msgstr "உயர் நிலை"
+
+msgid "LOW"
+msgstr "குறைந்த நிலை"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "{switch_name} ஐ {new_state} என மாற்றப்பட்டது"
