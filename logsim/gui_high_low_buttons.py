@@ -479,6 +479,9 @@ class CustomListCtrl(wx.ListCtrl):
         self.Bind(wx.EVT_LIST_ITEM_DESELECTED, self.on_item_selected)
         self.Bind(wx.EVT_SCROLLWIN, self.on_scroll)
         self.Bind(wx.EVT_PAINT, self.on_paint)
+        self.Bind(wx.EVT_LEFT_DOWN, self.on_left_click)  # Add click handling
+        self.Bind(wx.EVT_LEFT_UP, self.on_left_click)    # Add for Linux compatibility
+        self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.on_item_activated)  # Fallback for Linux
         
         # Create a timer for delayed refresh
         self.refresh_timer = wx.Timer(self)
@@ -586,6 +589,176 @@ class CustomListCtrl(wx.ListCtrl):
             self.refresh_timer.Stop()
             del self.refresh_timer
 
+    def on_left_click(self, event):
+        """Handle left mouse clicks to toggle switches."""
+        # Get click position
+        x, y = event.GetPosition()
+        
+        # Get the item at this position
+        item, flags = self.HitTest((x, y))
+        subitem = None
+        if item != -1:
+            # Calculate which column was clicked
+            x_offset = 0
+            for col in range(self.GetColumnCount()):
+                col_width = self.GetColumnWidth(col)
+                if x < x_offset + col_width:
+                    subitem = col
+                    break
+                x_offset += col_width
+        
+        if item != -1 and subitem == 1 and hasattr(self, 'switch_renderers') and item in self.switch_renderers:
+            # Get the item rectangle
+            rect = self.GetItemRect(item)
+            
+            # Calculate switch column position
+            first_col_width = self.GetColumnWidth(0)
+            switch_col_width = self.GetColumnWidth(1)
+            
+            # Calculate switch dimensions
+            switch_width = min(48, switch_col_width - 8)
+            switch_height = min(24, rect.height - 8)
+            
+            # Calculate switch position
+            switch_x = rect.x + first_col_width + (switch_col_width - switch_width) // 2
+            switch_y = rect.y + (rect.height - switch_height) // 2
+            
+            # Check if click was within switch bounds
+            if (switch_x <= x <= switch_x + switch_width and 
+                switch_y <= y <= switch_y + switch_height):
+                # Use the gui reference instead of navigating parents
+                parent = self.gui
+                
+                # Get switch name from the first column
+                switch_name = self.GetItem(item, 0).GetText()
+                
+                # Get device ID and current state
+                [device_id, _] = parent.devices.get_signal_ids(switch_name)
+                device = parent.devices.get_device(device_id)
+                current_state = device.switch_state
+                
+                # Toggle state
+                new_state = parent.devices.LOW if current_state == parent.devices.HIGH else parent.devices.HIGH
+                
+                if parent.devices.set_switch(device_id, new_state):
+                    # Update the renderer for this switch
+                    switch_theme = {
+                        'background': parent.current_theme['list']['background'],
+                        'switch_on': parent.current_theme['switch']['on'],
+                        'switch_off': parent.current_theme['switch']['off'],
+                        'switch_bg': parent.current_theme['switch']['handle']
+                    }
+                    self.switch_renderers[item] = SwitchRenderer(
+                        new_state == parent.devices.HIGH,
+                        switch_theme
+                    )
+                    parent.SetStatusText(wx.GetTranslation("Toggled {switch_name} to {state}").format(switch_name=switch_name, state=('HIGH' if new_state == parent.devices.HIGH else 'LOW')))
+
+                    # Force a refresh to update the switches
+                    self.Refresh()
+                    
+                    # Execute network to propagate changes
+                    if parent.network.execute_network():
+                        parent.update_display()
+                    else:
+                        wx.MessageBox(wx.GetTranslation("Error: Network oscillating"), "Error",
+                                    wx.OK | wx.ICON_ERROR)
+                else:
+                    wx.MessageBox(wx.GetTranslation("Failed to toggle switch {switch_name}").format(switch_name=switch_name), "Error",
+                                wx.OK | wx.ICON_ERROR)
+        
+        event.Skip()
+
+    def on_item_activated(self, event):
+        """Handle item activation (double-click or enter) to toggle switches (Linux fallback)."""
+        # Use the same logic as on_left_click, but only for the state column
+        item = event.GetIndex()
+        if item != -1 and hasattr(self, 'switch_renderers') and item in self.switch_renderers:
+            # Only toggle if the state column is activated
+            # On Linux, activation is usually on the first column, so always allow
+            parent = self.gui
+            switch_name = self.GetItem(item, 0).GetText()
+            [device_id, _] = parent.devices.get_signal_ids(switch_name)
+            device = parent.devices.get_device(device_id)
+            current_state = device.switch_state
+            new_state = parent.devices.LOW if current_state == parent.devices.HIGH else parent.devices.HIGH
+            if parent.devices.set_switch(device_id, new_state):
+                switch_theme = {
+                    'background': parent.current_theme['list']['background'],
+                    'switch_on': parent.current_theme['switch']['on'],
+                    'switch_off': parent.current_theme['switch']['off'],
+                    'switch_bg': parent.current_theme['switch']['handle']
+                }
+                self.switch_renderers[item] = SwitchRenderer(
+                    new_state == parent.devices.HIGH,
+                    switch_theme
+                )
+                parent.SetStatusText(wx.GetTranslation("[Activated] Toggled {switch_name} to {state}").format(switch_name=switch_name, state=('HIGH' if new_state == parent.devices.HIGH else 'LOW')))
+                self.Refresh()
+                if parent.network.execute_network():
+                    parent.update_display()
+                else:
+                    wx.MessageBox(wx.GetTranslation("Error: Network oscillating"), "Error", wx.OK | wx.ICON_ERROR)
+            else:
+                wx.MessageBox(wx.GetTranslation("Failed to toggle switch {switch_name}").format(switch_name=switch_name), "Error", wx.OK | wx.ICON_ERROR)
+        event.Skip()
+
+
+class SwitchRenderer(wx.grid.GridCellRenderer):
+    """Cross-platform text + oval switch renderer using the original DrawItem signature."""
+    def __init__(self, is_on=False, theme=None):
+        self.is_on = is_on
+        # Use the provided theme, but ensure required keys exist
+        default_theme = {
+            'on_color': wx.Colour(0, 200, 0),       # Green for HIGH
+            'off_color': wx.Colour(200, 0, 0),      # Red for LOW
+            'text_color': wx.Colour(255, 255, 255), # White text
+            'corner_radius': 20                     # Radius for rounded corners
+        }
+        if theme:
+            # Support old key names
+            if 'switch_on' in theme and 'switch_off' in theme:
+                theme = {
+                    'on_color': theme.get('switch_on', default_theme['on_color']),
+                    'off_color': theme.get('switch_off', default_theme['off_color']),
+                    'text_color': default_theme['text_color'],  # Use default if not provided
+                    'corner_radius': theme.get('corner_radius', default_theme['corner_radius'])
+                }
+        self.theme = theme or default_theme
+
+    def DrawItem(self, dc, rect, item):
+        """Draw HIGH or LOW with a colored oval switch, matching the expected method signature."""
+        is_on = self.is_on
+
+        text = "HIGH" if is_on else "LOW"
+        switch_color = self.theme['on_color'] if is_on else self.theme['off_color']
+        radius = self.theme['corner_radius']
+
+        # Create a rounded rectangle (oval-like shape) that fills most of the cell
+        padding = 4  # Padding around the switch
+        switch_rect = wx.Rect(
+            rect.x + padding,
+            rect.y + padding,
+            rect.width - 2 * padding,
+            rect.height - 2 * padding
+        )
+
+        # Draw the rounded rectangle
+        dc.SetBrush(wx.Brush(switch_color))
+        dc.SetPen(wx.Pen(switch_color))
+        dc.DrawRoundedRectangle(switch_rect, radius)
+
+        # Draw centered text
+        dc.SetTextForeground(self.theme['text_color'])
+        text_width, text_height = dc.GetTextExtent(text)
+        text_x = rect.x + (rect.width - text_width) // 2
+        text_y = rect.y + (rect.height - text_height) // 2
+        dc.DrawText(text, text_x, text_y)
+
+    def toggle(self):
+        """Optional helper to switch the state."""
+        self.is_on = not self.is_on
+
 class Gui(wx.Frame):
     """Configure the main window and all the widgets.
 
@@ -665,7 +838,7 @@ class Gui(wx.Frame):
                 'run': wx.Colour(0, 184, 148),
                 'stop': wx.Colour(255, 159, 26),
                 'reset': wx.Colour(255, 71, 87),
-                'continuous': wx.Colour(138, 43, 226),
+                'continuous': wx.Colour(138, 43, 226)
             },
             'canvas': {
                 'background': wx.Colour(255, 255, 255),
@@ -841,10 +1014,6 @@ class Gui(wx.Frame):
         self.switch_list.SetWindowStyle(current_style | wx.LC_SINGLE_SEL)
         self.switch_list.SetWindowStyle(current_style & ~wx.LC_SINGLE_SEL)
         
-        # Add toggle button
-        self.toggle_switch_btn = wx.Button(self.control_panel, label="Toggle Selected")
-        self.toggle_switch_btn.Disable()  # Initially disabled until switches are selected
-        
         # Add toggle buttons for all on/off
         self.all_on_btn = wx.Button(self.control_panel, label=wx.GetTranslation("All On"))
         self.all_off_btn = wx.Button(self.control_panel, label=wx.GetTranslation("All Off"))
@@ -853,7 +1022,6 @@ class Gui(wx.Frame):
         
         # Add components to switch sizer
         switch_sizer.Add(self.switch_list, 1, wx.EXPAND | wx.ALL, 5)
-        switch_sizer.Add(self.toggle_switch_btn, 0, wx.EXPAND | wx.ALL, 5)
         btn_row = wx.BoxSizer(wx.HORIZONTAL)
         btn_row.Add(self.all_on_btn, 1, wx.EXPAND | wx.RIGHT, 5)
         btn_row.Add(self.all_off_btn, 1, wx.EXPAND)
@@ -928,9 +1096,7 @@ class Gui(wx.Frame):
         self.remove_monitor_btn.Bind(wx.EVT_BUTTON, self.on_remove_monitor)
         self.all_on_btn.Bind(wx.EVT_BUTTON, self.on_all_on)
         self.all_off_btn.Bind(wx.EVT_BUTTON, self.on_all_off)
-        self.toggle_switch_btn.Bind(wx.EVT_BUTTON, self.on_toggle_switch)
         self.speed_btn.Bind(wx.EVT_BUTTON, self.on_speed_button)
-        self.switch_list.Bind(wx.EVT_LIST_ITEM_SELECTED, self.on_switch_selected)
         
         # Add accelerator table for F1 (Help), Alt+F4 (Exit), and Spacebar (Run/Pause)
         self.SPACEBAR_ID = wx.NewId()
@@ -1444,82 +1610,50 @@ class Gui(wx.Frame):
         dlg.Destroy()
 
     def update_switch_list(self):
+        """Update the list of switches and their states."""
         self.switch_list.DeleteAllItems()
+        self.switch_list.switch_renderers.clear()
         
-        # Ensure columns exist
-        if self.switch_list.GetColumnCount() == 0:
-            self.switch_list.InsertColumn(0, "Switch Name", width=120)
-            self.switch_list.InsertColumn(1, "State", width=80)
-        
+        # Find all switch devices
         switch_ids = self.devices.find_devices(self.devices.SWITCH)
         
         for i, switch_id in enumerate(switch_ids):
+            # Get switch name
             switch_name = self.devices.get_signal_name(switch_id, None)
+            
+            # Get switch state
             device = self.devices.get_device(switch_id)
-            state = "HIGH" if device.switch_state == self.devices.HIGH else "LOW"
+            is_high = device.switch_state == self.devices.HIGH
             
+            # Add to list
             index = self.switch_list.InsertItem(i, switch_name)
-            self.switch_list.SetItem(index, 1, state)
+            self.switch_list.SetItem(index, 1, "")  # Empty string as we'll draw custom switch
             
-            # Set colors based on current theme
-            if self.current_theme == self.dark_theme:
-                # Dark theme colors (softer but still visible)
-                on_color = wx.Colour(100, 255, 100)  # Soft green
-                off_color = wx.Colour(255, 100, 100)  # Soft red
-            else:
-                # Light theme colors (more professional/subtle)
-                on_color = wx.Colour(0, 150, 0)      # Darker green
-                off_color = wx.Colour(180, 0, 0)     # Darker red
+            # Set text color based on current theme
+            item = self.switch_list.GetItem(index, 0)
+            item.SetTextColour(self.current_theme['text'])
+            self.switch_list.SetItem(item)
             
-            self.switch_list.SetItemTextColour(index, 
-                on_color if state == "HIGH" else off_color)
+            # Create and store renderer for this switch with current theme colors
+            switch_theme = {
+                'background': self.current_theme['list']['background'],
+                'switch_on': self.current_theme['switch']['on'],
+                'switch_off': self.current_theme['switch']['off'],
+                'switch_bg': self.current_theme['switch']['handle']
+            }
+            renderer = SwitchRenderer(is_high, switch_theme)
+            self.switch_list.switch_renderers[index] = renderer
+            
+            # Force background color update for this row
+            self.switch_list.update_item_color(index)
         
-        self.switch_list.RefreshItems(0, len(switch_ids)-1)
-    
-    def on_switch_selected(self, event):
-        """Handle switch selection event."""
-        # Enable toggle button when any switches are selected
-        self.toggle_switch_btn.Enable(self.switch_list.GetSelectedItemCount() > 0)
-
-    def on_toggle_switch(self, event):
-        """Handle toggling multiple switch states."""
-        # Get all selected switches
-        selected = []
-        item = self.switch_list.GetFirstSelected()
-        while item != -1:
-            selected.append(item)
-            item = self.switch_list.GetNextSelected(item)
-            
-        if not selected:
-            return
-            
-        for selection in selected:
-            switch_name = self.switch_list.GetItem(selection, 0).GetText()
-            current_state = self.switch_list.GetItem(selection, 1).GetText()
-            
-            # Get device ID
-            [device_id, _] = self.devices.get_signal_ids(switch_name)
-            
-            # Toggle state
-            new_state = self.devices.LOW if current_state == "HIGH" else self.devices.HIGH
-            
-            if self.devices.set_switch(device_id, new_state):
-                self.SetStatusText(f"Toggled {switch_name} to {new_state}")
-            else:
-                wx.MessageBox(f"Failed to toggle switch {switch_name}", "Error",
-                            wx.OK | wx.ICON_ERROR)
-                
-        # Update display after all switches are toggled
-        self.update_switch_list()
+        # Adjust column widths
+        self.switch_list.SetColumnWidth(0, 150)  # Fixed width for name column
+        self.switch_list.SetColumnWidth(1, 80)   # Fixed width for switch column
         
-        # Execute network to propagate changes
-        if self.network.execute_network():
-            self.update_display()
-        else:
-            wx.MessageBox("Error: Network oscillating", "Error",
-                        wx.OK | wx.ICON_ERROR)
-        
-        self.toggle_switch_btn.Enable(False)
+        # Force a refresh to update the switches
+        self.switch_list.Refresh()
+        wx.CallAfter(self.switch_list.draw_all_switches)
 
     def on_all_on(self, event):
         """Set all switches to HIGH."""
@@ -1586,8 +1720,7 @@ class Gui(wx.Frame):
             self.all_off_btn,
             self.add_monitor_btn,
             self.remove_monitor_btn,
-            self.speed_btn,
-            self.toggle_switch_btn
+            self.speed_btn
         ]
         for btn in secondary_buttons:
             btn.SetBackgroundColour(self.current_theme['list']['background'])
@@ -1599,6 +1732,25 @@ class Gui(wx.Frame):
                 self.current_theme['list']['alternate']
             )
             lst.SetBackgroundColour(self.current_theme['list']['background'])
+            # Update text color for all items in the list
+            if lst == self.switch_list:
+                for i in range(lst.GetItemCount()):
+                    item = lst.GetItem(i, 0)
+                    item.SetTextColour(self.current_theme['text'])
+                    lst.SetItem(item)
+                # --- Begin: Update switch renderers with new theme ---
+                for index, renderer in lst.switch_renderers.items():
+                    is_high = renderer.is_on
+                    switch_theme = {
+                        'background': self.current_theme['list']['background'],
+                        'switch_on': self.current_theme['switch']['on'],
+                        'switch_off': self.current_theme['switch']['off'],
+                        'switch_bg': self.current_theme['switch']['handle']
+                    }
+                    lst.switch_renderers[index] = SwitchRenderer(is_high, switch_theme)
+                lst.Refresh()
+                wx.CallAfter(lst.draw_all_switches)
+                # --- End: Update switch renderers with new theme ---
         # Apply to static boxes and their backgrounds
         for box in [self.sim_box, self.switch_box, self.monitor_box]:
             box.SetBackgroundColour(self.current_theme['static_box']['background'])
