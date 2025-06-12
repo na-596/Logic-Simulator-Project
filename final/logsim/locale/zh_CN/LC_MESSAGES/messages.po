@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-09 10:21+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Logic Simulator"
+msgstr "逻辑模拟器"
+
+msgid "Failed to toggle switch {switch_name}"
+msgstr "切换开关 {switch_name} 失败"
+
+msgid "&About"
+msgstr "关于(&A)"
+
+msgid "&Help\tF1"
+msgstr "帮助\tF1"
+
+msgid "E&xit\tAlt+F4"
+msgstr "退出\tAlt+F4"
+
+msgid "&File"
+msgstr "文件(&F)"
+
+msgid "Ready"
+msgstr "就绪"
+
+msgid "Simulation Controls"
+msgstr "模拟控制"
+
+msgid "Speed:"
+msgstr "速度："
+
+msgid "Number of Cycles:"
+msgstr "周期数："
+
+msgid "▶ Run Simulation"
+msgstr "▶ 运行模拟"
+
+msgid "❚❚ Pause"
+msgstr "❚❚ 暂停"
+
+msgid "■ Reset"
+msgstr "■ 重置"
+
+msgid "Switch Controls"
+msgstr "开关控制"
+
+msgid "Switch"
+msgstr "开关"
+
+msgid "State"
+msgstr "状态"
+
+msgid "All On"
+msgstr "全部开启"
+
+msgid "All Off"
+msgstr "全部关闭"
+
+msgid "Monitors"
+msgstr "监视器"
+
+msgid "Signal"
+msgstr "信号"
+
+msgid "Add Monitor(s)"
+msgstr "添加监视器"
+
+msgid "Zap All"
+msgstr "清除所有"
+
+msgid ""
+"How to Use the Logic Simulator GUI\n"
+"\n"
+"---\n"
+"\n"
+"**Keybinds**\n"
+"- **F1:** Show this Help window\n"
+"- **Alt+F4:** Exit the application\n"
+"- **Spacebar:** Run/Pause the simulation\n"
+"\n"
+"**Simulation Controls**\n"
+"- **Number of Cycles:** Set how many cycles to run the simulation for.\n"
+"- **▶ Run Simulation:** Start the simulation for the chosen number of cycles.\n"
+"- **❚❚ Pause:** Pause the simulation at any time.\n"
+"- **■ Reset:** Reset the simulation and clear all monitor data.\n"
+"- **Speed:** Click to cycle through simulation speeds (x0.5, x1, x2, x4, x8).\n"
+"\n"
+"**Switch Controls**\n"
+"- Toggle individual switches by clicking the switch in the list.\n"
+"- Use **All On** or **All Off** to set all switches high or low.\n"
+"\n"
+"**Monitors**\n"
+"- Add a monitor to track a signal by clicking **Add Monitor** and selecting a signal.\n"
+"- Use **Add All** in the dialog to monitor all available signals.\n"
+"- Remove a monitor by clicking the ✕ button next to it, or **Zap All** to remove all monitors.\n"
+"- The monitor list shows the current state of each monitored signal.\n"
+"\n"
+"**Signal Display Canvas**\n"
+"- The main area shows waveforms for all monitored signals.\n"
+"- **Pan:** Click and drag to move the view.\n"
+"- **Zoom:** Use the mouse wheel to zoom in/out.\n"
+"- Signal colors match the color bars in the monitor list.\n"
+"\n"
+"**Themes**\n"
+"- Switch between Light and Dark mode from the Theme menu.\n"
+"\n"
+"**Status Bar**\n"
+"- The status bar at the bottom shows helpful messages and feedback.\n"
+"\n"
+"For more help, see the project documentation or contact the authors."
+msgstr ""
+"如何使用逻辑模拟器图形界面\n"
+"\n"
+"---\n"
+"\n"
+"**快捷键**\n"
+"- **F1：** 显示帮助窗口\n"
+"- **Alt+F4：** 退出应用程序\n"
+"- **空格键：** 运行/暂停模拟\n"
+"\n"
+"**模拟控制**\n"
+"- **周期数：** 设置模拟运行的周期数\n"
+"- **▶ 运行模拟：** 以设定周期数启动模拟\n"
+"- **❚❚ 暂停：** 随时暂停模拟\n"
+"- **■ 重置：** 重置模拟并清除所有监视器数据\n"
+"- **速度：** 点击切换模拟速度（x0.5、x1、x2、x4、x8）\n"
+"\n"
+"**开关控制**\n"
+"- 点击列表中的开关来切换单个开关\n"
+"- 使用 **全部开启** 或 **全部关闭** 设置所有开关状态\n"
+"\n"
+"**监视器**\n"
+"- 点击 **添加监视器** 并选择信号来添加监视器\n"
+"- 在对话框中使用 **全部添加** 监视所有可用信号\n"
+"- 点击 ✕ 按钮移除单个监视器，或使用 **清除所有** 移除所有监视器\n"
+"- 监视器列表显示当前信号状态\n"
+"\n"
+"**信号显示画布**\n"
+"- 主区域显示所有监控信号的波形图\n"
+"- **平移：** 点击并拖动以移动视图\n"
+"- **缩放：** 使用鼠标滚轮进行缩放\n"
+"- 信号颜色与监视器列表中的颜色条匹配\n"
+"\n"
+"**主题**\n"
+"- 可从主题菜单切换浅色和深色模式\n"
+"\n"
+"**状态栏**\n"
+"- 底部状态栏显示有用信息和反馈\n"
+"\n"
+"如需更多帮助，请参阅项目文档或联系作者"
+
+msgid "Help: How to Use the Logic Simulator"
+msgstr "帮助：如何使用逻辑模拟器"
+
+msgid "Logic Simulator\nCreated by:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+msgstr "逻辑模拟器\n由以下人员创建：\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+
+msgid "About Logsim"
+msgstr "关于 Logsim"
+
+msgid "Simulation already running"
+msgstr "模拟已在运行中"
+
+msgid "Simulation stopped"
+msgstr "模拟已停止"
+
+msgid "Simulation reset"
+msgstr "模拟已重置"
+
+msgid "Simulation completed"
+msgstr "模拟已完成"
+
+msgid "Simulation error occurred"
+msgstr "模拟发生错误"
+
+msgid "Running simulation for {num_cycles} cycles..."
+msgstr "运行模拟 {num_cycles} 个周期..."
+
+msgid "Error during simulation: {str(e)}"
+msgstr "模拟过程中发生错误：{str(e)}"
+
+msgid "Simulation Error"
+msgstr "模拟错误"
+
+msgid "Zapped monitor for {signal_name}"
+msgstr "已清除信号 {signal_name} 的监视器"
+
+msgid "Failed to zap monitor {signal_name}"
+msgstr "无法清除信号 {signal_name} 的监视器"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "No more signals available to monitor"
+msgstr "没有可用信号可供监控"
+
+msgid "Information"
+msgstr "信息"
+
+msgid "Added monitor for {signal_name}"
+msgstr "已添加 {signal_name} 的监视器"
+
+msgid "Failed to add monitor for {signal_name}"
+msgstr "无法添加 {signal_name} 的监视器"
+
+msgid "No signals available to monitor"
+msgstr "没有可监控的信号"
+
+msgid "Add all {len(non_monitored)} available signals?"
+msgstr "是否添加全部 {len(non_monitored)} 个可用信号？"
+
+msgid "Confirm Add All"
+msgstr "确认全部添加"
+
+msgid "Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "将 {switch_name} 切换为 {'高电平' if new_state == parent.devices.HIGH else '低电平'}"
+
+msgid "[Activated] Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "[已激活] 将 {switch_name} 切换为 {'高电平' if new_state == parent.devices.HIGH else '低电平'}"
+
+msgid "Added {success_count} monitors"
+msgstr "已添加 {success_count} 个监视器"
+
+msgid "No monitors to zap"
+msgstr "没有要清除的监视器"
+
+msgid "Are you sure you want to zap all monitors?"
+msgstr "您确定要清除所有监视器吗？"
+
+msgid "Confirm Zap All"
+msgstr "确认清除所有"
+
+msgid "Zapped all {monitor_count} monitors"
+msgstr "已清除全部 {monitor_count} 个监视器"
+
+msgid "Error: Network oscillating"
+msgstr "错误：网络振荡"
+
+msgid "All switches set to ON"
+msgstr "所有开关已设为开启"
+
+msgid "All switches set to OFF"
+msgstr "所有开关已设为关闭"
+
+msgid "Switched to Light Mode"
+msgstr "已切换至浅色模式"
+
+msgid "Switched to Dark Mode"
+msgstr "已切换至深色模式"
+
+msgid "Light Mode"
+msgstr "浅色模式"
+
+msgid "Dark Mode"
+msgstr "深色模式"
+
+msgid "&Theme"
+msgstr "主题(&T)"
+
+msgid "Signal:"
+msgstr "信号："
+
+msgid "Add All"
+msgstr "全部添加"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Add Monitor"
+msgstr "添加监视器"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Toggle Selected"
+msgstr "切换选中"
+
+msgid "∞ Continuous"
+msgstr "∞ 连续"
+
+msgid "Add all {x} available signals?"
+msgstr "是否添加全部 {x} 个可用信号？"
+
+msgid "HIGH"
+msgstr "高电平"
+
+msgid "LOW"
+msgstr "低电平"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "已切换 {switch_name} 为 {new_state}"

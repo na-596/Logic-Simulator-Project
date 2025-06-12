@@ -1,0 +1,361 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-09 10:21+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Logic Simulator"
+msgstr "தர்க்க ஒத்திகையாளர்"
+
+msgid "Failed to toggle switch {switch_name}"
+msgstr "{switch_name} சுவிட்சை மாற்ற இயலவில்லை"
+
+#: gui.py:815
+msgid "&About"
+msgstr "&பற்றி"
+
+#: gui.py:816
+msgid "&Help\tF1"
+msgstr "&உதவி\tF1"
+
+#: gui.py:818
+msgid "E&xit\tAlt+F4"
+msgstr "வெளியேறு\tAlt+F4"
+
+#: gui.py:819
+msgid "&File"
+msgstr "&கோப்பு"
+
+#: gui.py:833
+msgid "Ready"
+msgstr "தயார்"
+
+#: gui.py:849
+msgid "Simulation Controls"
+msgstr "ஒத்திகை கட்டுப்பாடுகள்"
+
+#: gui.py:856
+msgid "Speed:"
+msgstr "வேகம்:"
+
+#: gui.py:862
+msgid "Number of Cycles:"
+msgstr "சுழற்சி எண்ணிக்கை:"
+
+#: gui.py:867
+msgid "▶ Run Simulation"
+msgstr "▶ ஒத்திகையை இயக்கு"
+
+#: gui.py:868
+msgid "❚❚ Pause"
+msgstr "❚❚ இடைநிறுத்து"
+
+#: gui.py:869
+msgid "■ Reset"
+msgstr "■ மீட்டமை"
+
+#: gui.py:889
+msgid "Switch Controls"
+msgstr "சுவிட்ச் கட்டுப்பாடுகள்"
+
+#: gui.py:895
+msgid "Switch"
+msgstr "சுவிட்ச்"
+
+#: gui.py:896 gui.py:925
+msgid "State"
+msgstr "நிலை"
+
+#: gui.py:904
+msgid "All On"
+msgstr "அனைத்தும் இயக்கம்"
+
+#: gui.py:905
+msgid "All Off"
+msgstr "அனைத்தும் அணை"
+
+#: gui.py:917
+msgid "Monitors"
+msgstr "மாணிட்டர்கள்"
+
+#: gui.py:924
+msgid "Signal"
+msgstr "சிக்னல்"
+
+#: gui.py:941
+msgid "Add Monitor(s)"
+msgstr "மாணிட்டர்(களை) சேர்க்க"
+
+#: gui.py:942
+msgid "Zap All"
+msgstr "அனைத்தையும் அகற்று"
+
+msgid ""
+"How to Use the Logic Simulator GUI\n"
+"\n"
+"---\n"
+"\n"
+"**Keybinds**\n"
+"- **F1:** Show this Help window\n"
+"- **Alt+F4:** Exit the application\n"
+"- **Spacebar:** Run/Pause the simulation\n"
+"\n"
+"**Simulation Controls**\n"
+"- **Number of Cycles:** Set how many cycles to run the simulation for.\n"
+"- **▶ Run Simulation:** Start the simulation for the chosen number of cycles.\n"
+"- **❚❚ Pause:** Pause the simulation at any time.\n"
+"- **■ Reset:** Reset the simulation and clear all monitor data.\n"
+"- **Speed:** Click to cycle through simulation speeds (x0.5, x1, x2, x4, x8).\n"
+"\n"
+"**Switch Controls**\n"
+"- Toggle individual switches by clicking the switch in the list.\n"
+"- Use **All On** or **All Off** to set all switches high or low.\n"
+"\n"
+"**Monitors**\n"
+"- Add a monitor to track a signal by clicking **Add Monitor** and selecting a signal.\n"
+"- Use **Add All** in the dialog to monitor all available signals.\n"
+"- Remove a monitor by clicking the ✕ button next to it, or **Zap All** to remove all monitors.\n"
+"- The monitor list shows the current state of each monitored signal.\n"
+"\n"
+"**Signal Display Canvas**\n"
+"- The main area shows waveforms for all monitored signals.\n"
+"- **Pan:** Click and drag to move the view.\n"
+"- **Zoom:** Use the mouse wheel to zoom in/out.\n"
+"- Signal colors match the color bars in the monitor list.\n"
+"\n"
+"**Themes**\n"
+"- Switch between Light and Dark mode from the Theme menu.\n"
+"\n"
+"**Status Bar**\n"
+"- The status bar at the bottom shows helpful messages and feedback.\n"
+"\n"
+"For more help, see the project documentation or contact the authors."
+msgstr ""
+"தர்க்க ஒத்திகை GUI-ஐ பயன்படுத்துவது எப்படி\n"
+"\n"
+"---\n"
+"\n"
+"**முக்கிய குறுக்குவழிகள்**\n"
+"- **F1:** இந்த உதவி சாளரத்தை காண்பி\n"
+"- **Alt+F4:** பயன்பாட்டிலிருந்து வெளியேறு\n"
+"- **இடைவெளி பட்டன்:** ஒத்திகையை இயக்கு/இடைநிறுத்து\n"
+"\n"
+"**ஒத்திகை கட்டுப்பாடுகள்**\n"
+"- **சுழற்சி எண்ணிக்கை:** எத்தனை சுழற்சிகளுக்காக ஒத்திகையை இயக்க வேண்டும் என்பதை அமைக்கவும்.\n"
+"- **▶ ஒத்திகையை இயக்கு:** தேர்ந்தெடுக்கப்பட்ட சுழற்சி எண்ணிக்கைக்கு ஒத்திகையை தொடங்கு.\n"
+"- **❚❚ இடைநிறுத்து:** எப்போதும் ஒத்திகையை இடைநிறுத்தலாம்.\n"
+"- **■ மீட்டமை:** ஒத்திகையை மீட்டமைத்து அனைத்து மாணிட்டர் தரவையும் அழிக்கவும்.\n"
+"- **வேகம்:** ஒத்திகை வேகங்களை மாற (x0.5, x1, x2, x4, x8) கிளிக் செய்யவும்.\n"
+"\n"
+"**சுவிட்ச் கட்டுப்பாடுகள்**\n"
+"- பட்டியலில் உள்ள சுவிட்சை கிளிக் செய்வதன் மூலம் தனிப்பட்ட சுவிட்சுகளை மாற்றவும்.\n"
+"- **அனைத்தும் இயக்கம்** அல்லது **அனைத்தும் அணை** ஐ பயன்படுத்தி அனைத்து சுவிட்சுகளையும் உயரமாக அல்லது குறைவாக அமைக்கவும்.\n"
+"\n"
+"**மாணிட்டர்கள்**\n"
+"- ஒரு சிக்னலை கண்காணிக்க ஒரு மாணிட்டரைச் சேர்க்க **மாணிட்டர் சேர்க்க** என்பதை கிளிக் செய்து சிக்னலை தேர்ந்தெடுக்கவும்.\n"
+"- உரையாடல் பெட்டியில் உள்ள **அனைத்தையும் சேர்க்க** என்பதை பயன்படுத்தி எல்லா சிக்னல்களையும் கண்காணிக்கவும்.\n"
+"- ✕ பொத்தானை அழுத்துவதன் மூலம் ஒரு மாணிட்டரை அகற்றலாம் அல்லது **அனைத்தையும் அகற்று** மூலம் எல்லாவற்றையும் அகற்றலாம்.\n"
+"- மாணிட்டர் பட்டியல் ஒவ்வொரு கண்காணிக்கப்பட்ட சிக்னலின் தற்போதைய நிலையை காட்டுகிறது.\n"
+"\n"
+"**சிக்னல் காட்சி கன்வாஸ்**\n"
+"- முக்கிய பகுதி அனைத்து சிக்னல்களின் அலைவடிவங்களை காட்டுகிறது.\n"
+"- **சறுக்கு:** பார்வையை நகர கிளிக் செய்து இழுக்கவும்.\n"
+"- **பெரிதாக்க/சிறிதாக்க:** சுழற்பலகையைப் பயன்படுத்தவும்.\n"
+"- சிக்னல் நிறங்கள் மாணிட்டர் பட்டியலில் உள்ள நிறப்பட்டைகளுடன் ஒத்திருக்கின்றன.\n"
+"\n"
+"**தீம்கள்**\n"
+"- தீம் மெனுவிலிருந்து வெளிச்சம்/இருள் முறையை மாற்றலாம்.\n"
+"\n"
+"**நிலைப் பட்டை**\n"
+"- கீழே உள்ள நிலைப் பட்டையில் பயன்பாட்டு தகவல்கள் மற்றும் பின்னூட்டம் காட்டப்படும்.\n"
+"\n"
+"மேலும் உதவிக்கு, திட்ட ஆவணங்களைப் பார்க்கவும் அல்லது உருவாக்குநர்களை தொடர்பு கொள்ளவும்."
+
+#: gui.py: 1081
+msgid "Help: How to Use the Logic Simulator"
+msgstr "உதவி: தர்க்க ஒத்திகையாளரை எப்படி பயன்படுத்துவது"
+
+msgid "Logic Simulator\nCreated by:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+msgstr "தர்க்க ஒத்திகையாளர்\nஉருவாக்கியோர்:\nஅயோய்ஃபே டாடா\nநர்மீபான் அருந்தவராஜா\nராகவேந்திர நாராயண ராவ்\n2025"
+
+msgid "About Logsim"
+msgstr "Logsim பற்றி"
+
+#: gui.py:1092
+msgid "Simulation already running"
+msgstr "ஒத்திகை ஏற்கனவே இயங்குகிறது"
+
+#: gui.py:1097
+msgid "Simulation stopped"
+msgstr "ஒத்திகை நிறுத்தப்பட்டது"
+
+#: gui.py:1102 gui.py:1146
+msgid "Simulation reset"
+msgstr "ஒத்திகை மீட்டமைக்கப்பட்டது"
+
+#: gui.py:1158
+msgid "Simulation completed"
+msgstr "ஒத்திகை முடிந்தது"
+
+#: gui.py:1161
+msgid "Simulation error occurred"
+msgstr "ஒத்திகை பிழை ஏற்பட்டது"
+
+msgid "Running simulation for {num_cycles} cycles..."
+msgstr "{num_cycles} சுழற்சிகளுக்காக ஒத்திகை இயக்கப்படுகிறது..."
+
+#: gui.py:1172
+msgid "Error during simulation: {str(e)}"
+msgstr "ஒத்திகையின் போது பிழை: {str(e)}"
+
+#: gui.py:1173
+msgid "Simulation Error"
+msgstr "ஒத்திகை பிழை"
+
+#: gui.py:1284
+#, python-brace-format
+msgid "Zapped monitor for {signal_name}"
+msgstr "{signal_name} க்கான மாணிட்டர் அகற்றப்பட்டது"
+
+#: gui.py:1286
+#, python-brace-format
+msgid "Failed to zap monitor {signal_name}"
+msgstr "{signal_name} க்கான மாணிட்டரை அகற்ற முடியவில்லை"
+
+#: gui.py:1287 gui.py:1394 gui.py:1406 gui.py:1431 gui.py:1510 gui.py:1525
+msgid "Error"
+msgstr "பிழை"
+
+#: gui.py:1330
+msgid "No more signals available to monitor"
+msgstr "கண்காணிக்க மேலும் சிக்னல்கள் இல்லை"
+
+#: gui.py:1330
+msgid "Information"
+msgstr "தகவல்"
+
+#: gui.py:1390
+#, python-brace-format
+msgid "Added monitor for {signal_name}"
+msgstr "{signal_name} க்கான மாணிட்டர் சேர்க்கப்பட்டது"
+
+#: gui.py:1393
+#, python-brace-format
+msgid "Failed to add monitor for {signal_name}"
+msgstr "{signal_name} க்கான மாணிட்டரைச் சேர்க்க முடியவில்லை"
+
+#: gui.py:1405
+msgid "No signals available to monitor"
+msgstr "கண்காணிக்க சிக்னல்கள் இல்லை"
+
+#: gui.py:1413
+msgid "Add all {len(non_monitored)} available signals?"
+msgstr "{len(non_monitored)} கிடைக்கும் சிக்னல்களையும் சேர்க்கவா?"
+
+#: gui.py:1414
+msgid "Confirm Add All"
+msgstr "அனைத்தையும் சேர்க்க உறுதிசெய்க"
+
+msgid "Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "{switch_name} ஐ {'HIGH' if new_state == parent.devices.HIGH else 'LOW'} என மாற்றப்பட்டது"
+
+msgid "[Activated] Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "[செயல்படுத்தப்பட்டது] {switch_name} ஐ {'HIGH' if new_state == parent.devices.HIGH else 'LOW'} என மாற்றப்பட்டது"
+
+#: gui.py:1422
+#, python-brace-format
+msgid "Added {success_count} monitors"
+msgstr "{success_count} மாணிட்டர்கள் சேர்க்கப்பட்டனர்"
+
+#: gui.py:1430
+msgid "No monitors to zap"
+msgstr "அகற்ற மாணிட்டர்கள் இல்லை"
+
+#: gui.py:1438
+msgid "Are you sure you want to zap all monitors?"
+msgstr "அனைத்து மாணிட்டர்களையும் நீக்க விரும்புகிறீர்களா?"
+
+#: gui.py:1439
+msgid "Confirm Zap All"
+msgstr "அனைத்தையும் நீக்க உறுதிசெய்க"
+
+#: gui.py:1451
+#, python-brace-format
+msgid "Zapped all {monitor_count} monitors"
+msgstr "{monitor_count} மாணிட்டர்கள் நீக்கப்பட்டனர்"
+
+#: gui.py:1509 gui.py:1524
+msgid "Error: Network oscillating"
+msgstr "பிழை: பிணையம் அலைவுறுகிறது"
+
+#: gui.py:1513
+msgid "All switches set to ON"
+msgstr "அனைத்து சுவிட்சுகள் இயக்கப்பட்டன"
+
+#: gui.py:1528
+msgid "All switches set to OFF"
+msgstr "அனைத்து சுவிட்சுகள் அணைக்கப்பட்டன"
+
+#: gui.py:1643
+msgid "Switched to Light Mode"
+msgstr "ஒளி பயன்முறைக்கு மாற்றப்பட்டது"
+
+#: gui.py:1649
+msgid "Switched to Dark Mode"
+msgstr "இருள் பயன்முறைக்கு மாற்றப்பட்டது"
+
+msgid "Light Mode"
+msgstr "ஒளி பயன்முறை"
+
+msgid "Dark Mode"
+msgstr "இருள் பயன்முறை"
+
+msgid "&Theme"
+msgstr "&தீம்"
+
+
+msgid "Signal:"
+msgstr "சிக்னல்:"
+
+msgid "Add All"
+msgstr "அனைத்தையும் சேர்க்க"
+
+msgid "Cancel"
+msgstr "ரத்து செய்"
+
+msgid "Add Monitor"
+msgstr "மாணிட்டர் சேர்க்க"
+
+msgid "Add"
+msgstr "சேர்க்க"
+
+msgid "Toggle Selected"
+msgstr "தேர்ந்தெடுக்கப்பட்டதை மாற்று"
+
+msgid "∞ Continuous"
+msgstr "∞ தொடர்ச்சி"
+
+msgid "Add all {x} available signals?"
+msgstr "{x} கிடைக்கும் சிக்னல்களையும் சேர்க்கவா?"
+
+msgid "HIGH"
+msgstr "உயர் நிலை"
+
+msgid "LOW"
+msgstr "குறைந்த நிலை"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "{switch_name} ஐ {new_state} என மாற்றப்பட்டது"

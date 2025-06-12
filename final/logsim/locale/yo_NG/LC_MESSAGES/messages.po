@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-09 10:21+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: logsim.py
+msgid "Logic Simulator"
+msgstr "Afarawe Lójìkì"
+
+msgid "Failed to toggle switch {switch_name}"
+msgstr "Kò ṣàṣeyọrí láti yí switṣi {switch_name} padà"
+
+#: gui.py:815
+msgid "&About"
+msgstr "&Nípa"
+
+#: gui.py:816
+msgid "&Help\tF1"
+msgstr "Ìrànlọ́wọ́\tF1"
+
+#: gui.py:818
+msgid "E&xit\tAlt+F4"
+msgstr "Jáde\tAlt+F4"
+
+#: gui.py:819
+msgid "&File"
+msgstr "Fáìlì"
+
+#: gui.py:833
+msgid "Ready"
+msgstr "Ó ṣetán"
+
+#: gui.py:849
+msgid "Simulation Controls"
+msgstr "Àwọn Ìṣàkóso Afarawe"
+
+#: gui.py:856
+msgid "Speed:"
+msgstr "Iyara:"
+
+#: gui.py:862
+msgid "Number of Cycles:"
+msgstr "Iye Àwọn Ìyípo:"
+
+#: gui.py:867
+msgid "▶ Run Simulation"
+msgstr "▶ Bẹrẹ Afarawe"
+
+#: gui.py:868
+msgid "❚❚ Pause"
+msgstr "❚❚ Dá dúró"
+
+#: gui.py:869
+msgid "■ Reset"
+msgstr "■ Tún ṣètò"
+
+#: gui.py:889
+msgid "Switch Controls"
+msgstr "Àwọn Ìṣàkóso Switṣi"
+
+#: gui.py:895
+msgid "Switch"
+msgstr "Switṣi"
+
+#: gui.py:896 gui.py:925
+msgid "State"
+msgstr "Ìpò"
+
+#: gui.py:904
+msgid "All On"
+msgstr "Gbogbo rẹ tan"
+
+#: gui.py:905
+msgid "All Off"
+msgstr "Gbogbo rẹ pa"
+
+#: gui.py:917
+msgid "Monitors"
+msgstr "Àwọn Mónítọ"
+
+#: gui.py:924
+msgid "Signal"
+msgstr "Àmì"
+
+#: gui.py:941
+msgid "Add Monitor(s)"
+msgstr "Fi Mónítọ Kún"
+
+#: gui.py:942
+msgid "Zap All"
+msgstr "Yọ Gbogbo Rẹ Kúrò"
+
+msgid "How to Use the Logic Simulator GUI\n\n---\n\nKeybinds\n- F1: Show this Help window\n- Alt+F4: Exit the application\n- Spacebar: Run/Pause the simulation\n\nSimulation Controls\n- Number of Cycles: Set how many cycles to run the simulation for.\n- ▶ Run Simulation: Start the simulation for the chosen number of cycles.\n- ❚❚ Pause: Pause the simulation at any time.\n- ■ Reset: Reset the simulation and clear all monitor data.\n- Speed: Click to cycle through simulation speeds (x0.5, x1, x2, x4, x8).\n\nSwitch Controls\n- Toggle individual switches by clicking the switch in the list.\n- Use All On or All Off to set all switches high or low.\n\nMonitors\n- Add a monitor to track a signal by clicking Add Monitor and selecting a signal.\n- Use Add All in the dialog to monitor all available signals.\n- Remove a monitor by clicking the ✕ button next to it, or Zap All to remove all monitors.\n- The monitor list shows the current state of each monitored signal.\n\nSignal Display Canvas\n- The main area shows waveforms for all monitored signals.\n- Pan: Click and drag to move the view.\n- Zoom: Use the mouse wheel to zoom in/out.\n- Signal colors match the color bars in the monitor list.\n\nThemes\n- Switch between Light and Dark mode from the Theme menu.\n\nStatus Bar\n- The status bar at the bottom shows helpful messages and feedback.\n\nFor more help, see the project documentation or contact the authors."
+msgstr "Bí a ṣe lè lo Afarawe Lójìkì GUI\n\n---\n\nÀwọn Kókóró Aṣẹ́\n- F1: Ṣí ojú ìrànlọ́wọ́ yìí\n- Alt+F4: Jáde kúrò nínú ètò ìṣiṣẹ́\n- Bọ́tìnì Ààyè: Bẹrẹ/Dá afarawe dúró\n\nÀwọn Ìṣàkóso Afarawe\n- Iye Àwọn Ìyípo: Ṣètò iye ìyípo tí afarawe yóò fi ṣiṣẹ́.\n- ▶ Bẹrẹ Afarawe: Bẹrẹ afarawe fún iye ìyípo tí o yàn.\n- ❚❚ Dá dúró: Dá afarawe dúró nígbàkúgbà.\n- ■ Tún ṣètò: Tún afarawe ṣètò, kí o sì pa gbogbo dátà àwọn mónítọ rẹ́.\n- Iyara: Tẹ láti yí iyara afarawe padà (x0.5, x1, x2, x4, x8).\n\nÀwọn Ìṣàkóso Switṣi\n- Yí switṣi kọ̀ọ̀kan padà nípa títẹ switṣi náà nínú àtòjọ.\n- Lo Gbogbo rẹ tan tàbí Gbogbo rẹ pa láti ṣètò gbogbo switṣi sí ipò gíga tàbí ìpìlẹ̀.\n\nÀwọn Mónítọ\n- Fi mónítọ kún láti ṣàbojútó àmì kan nípa títẹ Fi Mónítọ Kún àti yíyan àmì kan.\n- Lo Fi Gbogbo Rẹ̀ Kún nínú àpótí ìjíròrò láti bojú tó gbogbo àwọn àmì tó wà.\n- Yọ mónítọ kúrò nípa títẹ bọ́tìnì ✕ lẹ́gbẹ̀ẹ́ rẹ̀, tàbí Yọ Gbogbo Rẹ Kúrò láti yọ gbogbo àwọn mónítọ kúrò.\n- Àtòjọ àwọn mónítọ ń fi ipò àwọn àmì tí a ń ṣàbojútó hàn.\n\nOjú Àfihàn Àmì\n- Agbègbè àárín ń fi àwòrán ìgbì omi hàn fún gbogbo àmì tí a ń ṣàbojútó.\n- Gbé Àwòrán: Tẹ kí o sì fà láti gbé àwòrán.\n- Sún-un/Fà-á: Lo kẹ̀kẹ́ máàsì láti sún-un síwájú tàbí fà-á sẹ́yìn.\n- Àwọ̀ àwọn àmì bá àwọn tí ó wà nínú àtòjọ àwọn mónítọ mu.\n\nÀwọn Àkòrí\n- Yí padà láàrin Ipo Imọ́lẹ̀ àti Ipo Dúdú láti inú àtòjọ àwọn àkòrí.\n\nPẹpẹ Ipo\n- Pẹpẹ Ipo tó wà ní ìsàlẹ̀ ń fi àwọn ìfiranṣẹ́ ìrànlọ́wọ́ àti ìdáhùn-padà hàn.\n\nFún ìrànlọ́wọ́ síwájú síi, wo àkọsílẹ̀ iṣẹ́ àgbékalẹ̀ náà tàbí kan sí àwọn olùkọ̀wé."
+
+#: gui.py: 1081
+msgid "Help: How to Use the Logic Simulator"
+msgstr "Ìrànlọ́wọ́: Bí a ṣe n lo Afarawe Lójìkì"
+
+msgid "Logic Simulator\nCreated by:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+msgstr "Afarawe Lójìkì\nÀwọn Olùdásílẹ̀:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+
+msgid "About Logsim"
+msgstr "Nípa Logsim"
+
+#: gui.py:1092
+msgid "Simulation already running"
+msgstr "Afarawe ti ń ṣiṣẹ́ lọ́wọ́"
+
+#: gui.py:1097
+msgid "Simulation stopped"
+msgstr "Afarawe ti dúró"
+
+#: gui.py:1102 gui.py:1146
+msgid "Simulation reset"
+msgstr "Afarawe ti tún ṣètò"
+
+#: gui.py:1158
+msgid "Simulation completed"
+msgstr "Afarawe ti parí"
+
+#: gui.py:1161
+msgid "Simulation error occurred"
+msgstr "Aṣiṣe kan ṣẹlẹ̀ nígbà afarawe"
+
+msgid "Running simulation for {num_cycles} cycles..."
+msgstr "Afarawe ń lọ fún ìyípo {num_cycles}..."
+
+#: gui.py:1172
+msgid "Error during simulation: {str(e)}"
+msgstr "Aṣiṣe nígbà afarawe: {str(e)}"
+
+#: gui.py:1173
+msgid "Simulation Error"
+msgstr "Aṣiṣe Afarawe"
+
+#: gui.py:1284
+#, python-brace-format
+msgid "Zapped monitor for {signal_name}"
+msgstr "A ti yọ mónítọ fún {signal_name} kúrò"
+
+#: gui.py:1286
+#, python-brace-format
+msgid "Failed to zap monitor {signal_name}"
+msgstr "Kò ṣàṣeyọrí láti yọ mónítọ {signal_name} kúrò"
+
+#: gui.py:1287 gui.py:1394 gui.py:1406 gui.py:1431 gui.py:1510 gui.py:1525
+msgid "Error"
+msgstr "Aṣiṣe"
+
+#: gui.py:1330
+msgid "No more signals available to monitor"
+msgstr "Kò sí àmì míràn mọ́ láti ṣàbojútó"
+
+#: gui.py:1330
+msgid "Information"
+msgstr "Ìsọfúnni"
+
+#: gui.py:1390
+#, python-brace-format
+msgid "Added monitor for {signal_name}"
+msgstr "A ti fi mónítọ kún fún {signal_name}"
+
+#: gui.py:1393
+#, python-brace-format
+msgid "Failed to add monitor for {signal_name}"
+msgstr "Kò ṣàṣeyọrí láti fi mónítọ kún fún {signal_name}"
+
+#: gui.py:1405
+msgid "No signals available to monitor"
+msgstr "Kò sí àmì kankan tí a lè ṣàbojútó"
+
+#: gui.py:1413
+msgid "Add all {len(non_monitored)} available signals?"
+msgstr "Ṣé ká fi gbogbo àmì ({len(non_monitored)}) tó wà kún un?"
+
+#: gui.py:1414
+msgid "Confirm Add All"
+msgstr "Fìdí Múlí Fi Gbogbo Rẹ̀ Kún"
+
+msgid "Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "A yí {switch_name} padà sí {'GIGA' bí new_state == parent.devices.HIGH bí bẹ́ẹ̀kọ́ 'KÉRÉ'}"
+
+msgid "[Activated] Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "[Lílo] A yí {switch_name} padà sí {'GIGA' bí new_state == parent.devices.HIGH bí bẹ́ẹ̀kọ́ 'KÉRÉ'}"
+
+#: gui.py:1422
+#, python-brace-format
+msgid "Added {success_count} monitors"
+msgstr "A ti fi mónítọ {success_count} kún"
+
+#: gui.py:1430
+msgid "No monitors to zap"
+msgstr "Kò sí mónítọ láti yọ kúrò"
+
+#: gui.py:1438
+msgid "Are you sure you want to zap all monitors?"
+msgstr "Ṣé ó dájú pé o fẹ́ yọ gbogbo àwọn mónítọ kúrò?"
+
+#: gui.py:1439
+msgid "Confirm Zap All"
+msgstr "Fìdí Múlí Yíyọ Gbogbo Rẹ̀ Kúrò"
+
+#: gui.py:1451
+#, python-brace-format
+msgid "Zapped all {monitor_count} monitors"
+msgstr "A ti yọ gbogbo mónítọ {monitor_count} kúrò"
+
+#: gui.py:1509 gui.py:1524
+msgid "Error: Network oscillating"
+msgstr "Aṣiṣe: Nẹ́tíwọ́ọ̀kì ń dọ́gbẹ̀dọ́gbẹ̀"
+
+#: gui.py:1513
+msgid "All switches set to ON"
+msgstr "A ti tan gbogbo àwọn switṣi"
+
+#: gui.py:1528
+msgid "All switches set to OFF"
+msgstr "A ti pa gbogbo àwọn switṣi"
+
+#: gui.py:1643
+msgid "Switched to Light Mode"
+msgstr "A ti yí padà sí Ipo Imọ́lẹ̀"
+
+#: gui.py:1649
+msgid "Switched to Dark Mode"
+msgstr "A ti yí padà sí Ipo Dúdú"
+
+msgid "Light Mode"
+msgstr "Ipo Imọ́lẹ̀"
+
+msgid "Dark Mode"
+msgstr "Ipo Dúdú"
+
+msgid "&Theme"
+msgstr "&Àkòrí"
+
+
+msgid "Signal:"
+msgstr "Àmì:"
+
+msgid "Add All"
+msgstr "Fikun gbogbo"
+
+msgid "Cancel"
+msgstr "Fagilee"
+
+msgid "Add Monitor"
+msgstr "Fikun Monitor"
+
+msgid "Add"
+msgstr "Fikun"
+
+msgid "Toggle Selected"
+msgstr "Yípadà Tí a Yan"
+
+msgid "∞ Continuous"
+msgstr "∞ Tẹsiwaju"
+
+msgid "Add all {x} available signals?"
+msgstr "Ṣé ká fi gbogbo àmì ({x}) tó wà kún un?"
+
+msgid "HIGH"
+msgstr "GIGA"
+
+msgid "LOW"
+msgstr "KÉRÉ"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "A yí {switch_name} padà sí {new_state}"

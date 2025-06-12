@@ -1,0 +1,52 @@
+DEVICES SI25:SIGGEN,
+        SI25:SIGGEN XOR,
+        D1:DTYPE, 
+        D2:DTYPE, 
+        N1:NAND,
+        SI2:SIGGEN a000b001,
+        SI1:SIGGEN 00001001,
+        SI3:SIGGEN DEVICES,
+        SI4:SIGGEN a,
+        SI1:SIGGEN 00001001,
+        SI5:SIGGEN 00001001,
+        SI6:SIGGEN,
+        SI7:SIGGEN 4,
+        SI8:SIGGEN A,
+        SI9:SIGGEN .,
+        SI10:SIGGEN :,
+        SI11:SIGGEN >,
+        SI12:SIGGEN ,,
+        SI13:SIGGEN 1,
+        SI14:SIGGEN 0,
+
+        C1:CLOCK,
+        C2:CLOCK AND,
+
+        S1:SWITCH 0, 
+        S1:SIGGEN 1001001,
+        S2:SWITCH 1,
+        S4:SWITCH,
+        S5:SWITCH AND,
+        S3:SWITCH 0, 
+
+        C3:CLOCK 0;
+
+/* connect inputs and outputs */
+CONNECT S1 > D1.SET,
+        S1 > D2.SET,
+        S2 > D1.DATA,
+        S3 > D1.CLEAR,
+        S3 > D2.CLEAR,
+
+        SI1 > D1.CLK,
+        SI1 > D2.CLK,
+
+        D1.Q > D2.DATA,
+        D2.Q > N1.I1,
+        D2.QBAR > N1.I2 ;
+
+/* monitor certain signals */
+MONITOR D1.QBAR, 
+        N1 ;
+
+END 

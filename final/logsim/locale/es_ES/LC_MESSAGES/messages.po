@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-09 10:21+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: logsim.py
+msgid "Logic Simulator"
+msgstr "Simulador de lógica"
+
+msgid "Failed to toggle switch {switch_name}"
+msgstr "Error al cambiar el interruptor {switch_name}"
+
+#: gui.py:815
+msgid "&About"
+msgstr "&Acerca de"
+
+#: gui.py:816
+msgid "&Help\tF1"
+msgstr "Ayuda\tF1"
+
+#: gui.py:818
+msgid "E&xit\tAlt+F4"
+msgstr "Salir\tAlt+F4"
+
+#: gui.py:819
+msgid "&File"
+msgstr "&Archivo"
+
+#: gui.py:833
+msgid "Ready"
+msgstr "Listo"
+
+#: gui.py:849
+msgid "Simulation Controls"
+msgstr "Controles de simulación"
+
+#: gui.py:856
+msgid "Speed:"
+msgstr "Velocidad:"
+
+#: gui.py:862
+msgid "Number of Cycles:"
+msgstr "Número de ciclos:"
+
+#: gui.py:867
+msgid "▶ Run Simulation"
+msgstr "▶ Simulación de ejecución"
+
+#: gui.py:868
+msgid "❚❚ Pause"
+msgstr "❚❚ Pausa"
+
+#: gui.py:869
+msgid "■ Reset"
+msgstr "■ Restablecer"
+
+#: gui.py:889
+msgid "Switch Controls"
+msgstr "Controles de interruptores"
+
+#: gui.py:895
+msgid "Switch"
+msgstr "Interruptor"
+
+#: gui.py:896 gui.py:925
+msgid "State"
+msgstr "Estado"
+
+#: gui.py:904
+msgid "All On"
+msgstr "Todo encendido"
+
+#: gui.py:905
+msgid "All Off"
+msgstr "Todo apagado"
+
+#: gui.py:917
+msgid "Monitors"
+msgstr "Monitores"
+
+#: gui.py:924
+msgid "Signal"
+msgstr "Señal"
+
+#: gui.py:941
+msgid "Add Monitor(s)"
+msgstr "Agregar monitor(s)"
+
+#: gui.py:942
+msgid "Zap All"
+msgstr "Eliminar todos"
+
+msgid ""
+"How to Use the Logic Simulator GUI\n"
+"\n"
+"---\n"
+"\n"
+"**Keybinds**\n"
+"- **F1:** Show this Help window\n"
+"- **Alt+F4:** Exit the application\n"
+"- **Spacebar:** Run/Pause the simulation\n"
+"\n"
+"**Simulation Controls**\n"
+"- **Number of Cycles:** Set how many cycles to run the simulation for.\n"
+"- **▶ Run Simulation:** Start the simulation for the chosen number of cycles.\n"
+"- **❚❚ Pause:** Pause the simulation at any time.\n"
+"- **■ Reset:** Reset the simulation and clear all monitor data.\n"
+"- **Speed:** Click to cycle through simulation speeds (x0.5, x1, x2, x4, x8).\n"
+"\n"
+"**Switch Controls**\n"
+"- Toggle individual switches by clicking the switch in the list.\n"
+"- Use **All On** or **All Off** to set all switches high or low.\n"
+"\n"
+"**Monitors**\n"
+"- Add a monitor to track a signal by clicking **Add Monitor** and selecting a signal.\n"
+"- Use **Add All** in the dialog to monitor all available signals.\n"
+"- Remove a monitor by clicking the ✕ button next to it, or **Zap All** to remove all monitors.\n"
+"- The monitor list shows the current state of each monitored signal.\n"
+"\n"
+"**Signal Display Canvas**\n"
+"- The main area shows waveforms for all monitored signals.\n"
+"- **Pan:** Click and drag to move the view.\n"
+"- **Zoom:** Use the mouse wheel to zoom in/out.\n"
+"- Signal colors match the color bars in the monitor list.\n"
+"\n"
+"**Themes**\n"
+"- Switch between Light and Dark mode from the Theme menu.\n"
+"\n"
+"**Status Bar**\n"
+"- The status bar at the bottom shows helpful messages and feedback.\n"
+"\n"
+"For more help, see the project documentation or contact the authors."
+msgstr ""
+"Cómo usar la interfaz gráfica del Simulador Lógico\n"
+"\n"
+"---\n"
+"\n"
+"**Atajos de teclado**\n"
+"- **F1:** Mostrar esta ventana de ayuda\n"
+"- **Alt+F4:** Salir de la aplicación\n"
+"- **Barra espaciadora:** Ejecutar/Pausar la simulación\n"
+"\n"
+"**Controles de simulación**\n"
+"- **Número de ciclos:** Establecer cuántos ciclos ejecutar en la simulación.\n"
+"- **▶ Ejecutar simulación:** Iniciar la simulación con el número de ciclos elegido.\n"
+"- **❚❚ Pausa:** Pausar la simulación en cualquier momento.\n"
+"- **■ Reiniciar:** Reiniciar la simulación y borrar todos los datos de los monitores.\n"
+"- **Velocidad:** Haz clic para cambiar la velocidad de simulación (x0.5, x1, x2, x4, x8).\n"
+"\n"
+"**Controles de interruptores**\n"
+"- Activa o desactiva interruptores individuales haciendo clic en ellos en la lista.\n"
+"- Usa **Encender todos** o **Apagar todos** para poner todos los interruptores en alto o bajo.\n"
+"\n"
+"**Monitores**\n"
+"- Agrega un monitor para seguir una señal haciendo clic en **Agregar monitor** y seleccionando una señal.\n"
+"- Usa **Agregar todos** en el cuadro de diálogo para monitorear todas las señales disponibles.\n"
+"- Elimina un monitor haciendo clic en el botón ✕ junto a él, o **Eliminar todos** para borrar todos los monitores.\n"
+"- La lista de monitores muestra el estado actual de cada señal monitoreada.\n"
+"\n"
+"**Lienzo de visualización de señales**\n"
+"- El área principal muestra formas de onda de todas las señales monitoreadas.\n"
+"- **Desplazar:** Haz clic y arrastra para mover la vista.\n"
+"- **Zoom:** Usa la rueda del ratón para acercar/alejar.\n"
+"- Los colores de las señales coinciden con las barras de color en la lista de monitores.\n"
+"\n"
+"**Temas**\n"
+"- Cambia entre el modo Claro y Oscuro desde el menú de temas.\n"
+"\n"
+"**Barra de estado**\n"
+"- La barra de estado inferior muestra mensajes útiles y retroalimentación.\n"
+"\n"
+"Para más ayuda, consulta la documentación del proyecto o contacta con los autores."
+
+# gui.py: 1081
+msgid "Help: How to Use the Logic Simulator"
+msgstr "Ayuda: Cómo usar el simulador lógico"
+
+msgid "Logic Simulator\nCreated by:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+msgstr "Simulador lógico\nCreado por:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+
+msgid "About Logsim"
+msgstr "Acerca de Logsim"
+
+#: gui.py:1092
+msgid "Simulation already running"
+msgstr "Simulación que ya está en funcionamiento"
+
+#: gui.py:1097
+msgid "Simulation stopped"
+msgstr "La simulación se detuvo"
+
+#: gui.py:1102 gui.py:1146
+msgid "Simulation reset"
+msgstr "Reinicio de simulación"
+
+#: gui.py:1158
+msgid "Simulation completed"
+msgstr "Simulación completada"
+
+#: gui.py:1161
+msgid "Simulation error occurred"
+msgstr "Se produjo un error de simulación"
+
+msgid "Running simulation for {num_cycles} cycles..."
+msgstr "Ejecutando simulación por {num_cycles} ciclos..."
+
+#: gui.py:1172
+msgid "Error during simulation: {str(e)}"
+msgstr "Error durante la simulación: {str (e)}"
+
+#: gui.py:1173
+msgid "Simulation Error"
+msgstr "Error de simulación"
+
+#: gui.py:1284
+#, python-brace-format
+msgid "Zapped monitor for {signal_name}"
+msgstr "Monitor eliminado para {signal_name}"
+
+#: gui.py:1286
+#, python-brace-format
+msgid "Failed to zap monitor {signal_name}"
+msgstr "No se pudo eliminar el monitor {signal_name}"
+
+#: gui.py:1287 gui.py:1394 gui.py:1406 gui.py:1431 gui.py:1510 gui.py:1525
+msgid "Error"
+msgstr "Error"
+
+#: gui.py:1330
+msgid "No more signals available to monitor"
+msgstr "No más señales disponibles para monitorear"
+
+#: gui.py:1330
+msgid "Information"
+msgstr "Información"
+
+#: gui.py:1390
+#, python-brace-format
+msgid "Added monitor for {signal_name}"
+msgstr "Monitor agregado para {signal_name}"
+
+#: gui.py:1393
+#, python-brace-format
+msgid "Failed to add monitor for {signal_name}"
+msgstr "No se pudo agregar el monitor para {signal_name}"
+
+#: gui.py:1405
+msgid "No signals available to monitor"
+msgstr "No hay señales disponibles para monitorear"
+
+#: gui.py:1413
+msgid "Add all {len(non_monitored)} available signals?"
+msgstr "¿Agregar todas las {len(non_monitored)} señales disponibles?"
+
+#: gui.py:1414
+msgid "Confirm Add All"
+msgstr "Confirmar agregar todo"
+
+msgid "Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "Cambió {switch_name} a {'ALTO' si new_state == parent.devices.HIGH else 'BAJO'}"
+
+msgid "[Activated] Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "[Activado] Cambió {switch_name} a {'ALTO' si new_state == parent.devices.HIGH else 'BAJO'}"
+
+#: gui.py:1422
+#, python-brace-format
+msgid "Added {success_count} monitors"
+msgstr "Se agregaron {success_count} monitores"
+
+#: gui.py:1430
+msgid "No monitors to zap"
+msgstr "No hay monitores para eliminar"
+
+#: gui.py:1438
+msgid "Are you sure you want to zap all monitors?"
+msgstr "¿Estás seguro de que quieres eliminar todos los monitores?"
+
+#: gui.py:1439
+msgid "Confirm Zap All"
+msgstr "Confirmar eliminar todos"
+
+#: gui.py:1451
+#, python-brace-format
+msgid "Zapped all {monitor_count} monitors"
+msgstr "Se eliminaron los {monitor_count} monitores"
+
+#: gui.py:1509 gui.py:1524
+msgid "Error: Network oscillating"
+msgstr "Error: oscilación de red"
+
+#: gui.py:1513
+msgid "All switches set to ON"
+msgstr "Todos los interruptores en ON"
+
+#: gui.py:1528
+msgid "All switches set to OFF"
+msgstr "Todos los interruptores en OFF"
+
+#: gui.py:1643
+msgid "Switched to Light Mode"
+msgstr "Cambiado a modo claro"
+
+#: gui.py:1649
+msgid "Switched to Dark Mode"
+msgstr "Cambiado a modo oscuro"
+
+msgid "Light Mode"
+msgstr "Modo claro"
+
+msgid "Dark Mode"
+msgstr "Modo oscuro"
+
+msgid "&Theme"
+msgstr "&Tema"
+
+
+msgid "Signal:"
+msgstr "Señal:"
+
+msgid "Add All"
+msgstr "Agregar Todo"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Add Monitor"
+msgstr "Agregar Monitor"
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "Toggle Selected"
+msgstr "Alternar Seleccionado"
+
+msgid "∞ Continuous"
+msgstr "∞ Continuo"
+
+msgid "Add all {x} available signals?"
+msgstr "¿Agregar todas las {x} señales disponibles?"
+
+msgid "HIGH"
+msgstr "Alto"
+
+msgid "LOW"
+msgstr "Bajo"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "Se cambió {switch_name} a {new_state}"

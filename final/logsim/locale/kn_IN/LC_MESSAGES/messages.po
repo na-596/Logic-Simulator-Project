@@ -1,0 +1,363 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-09 10:21+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Kannada translations for Logic Simulator
+#: logsim.py
+msgid "Logic Simulator"
+msgstr "ತಾರ್ಕಿಕ ಅನುಕರಕ"
+
+msgid "Failed to toggle switch {switch_name}"
+msgstr "{switch_name} ಸ್ವಿಚ್ ತಿರುವಲು ವಿಫಲವಾಯಿತು"
+
+#: gui.py:815
+msgid "&About"
+msgstr "&ಬಗ್ಗೆ"
+
+#: gui.py:816
+msgid "&Help\tF1"
+msgstr "&ಸಹಾಯ\tF1"
+
+#: gui.py:818
+msgid "E&xit\tAlt+F4"
+msgstr "&ನಿರ್ಗಮಿಸು\tAlt+F4"
+
+#: gui.py:819
+msgid "&File"
+msgstr "&ಫೈಲ್"
+
+#: gui.py:833
+msgid "Ready"
+msgstr "ಸಿದ್ಧವಾಗಿದೆ"
+
+#: gui.py:849
+msgid "Simulation Controls"
+msgstr "ಅನುಕರಣ ನಿಯಂತ್ರಣಗಳು"
+
+#: gui.py:856
+msgid "Speed:"
+msgstr "ವೇಗ:"
+
+#: gui.py:862
+msgid "Number of Cycles:"
+msgstr "ಚಕ್ರಗಳ ಸಂಖ್ಯೆ:"
+
+#: gui.py:867
+msgid "▶ Run Simulation"
+msgstr "▶ ಅನುಕರಣ ಚಾಲನೆ"
+
+#: gui.py:868
+msgid "❚❚ Pause"
+msgstr "❚❚ ತಡೆ"
+
+#: gui.py:869
+msgid "■ Reset"
+msgstr "■ ಮರುಹೊಂದಿಸು"
+
+#: gui.py:889
+msgid "Switch Controls"
+msgstr "ಸ್ವಿಚ್ ನಿಯಂತ್ರಣಗಳು"
+
+#: gui.py:895
+msgid "Switch"
+msgstr "ಸ್ವಿಚ್"
+
+#: gui.py:896 gui.py:925
+msgid "State"
+msgstr "ಸ್ಥಿತಿ"
+
+#: gui.py:904
+msgid "All On"
+msgstr "ಎಲ್ಲವೂ ಓನ್"
+
+#: gui.py:905
+msgid "All Off"
+msgstr "ಎಲ್ಲವೂ ಆಫ್"
+
+#: gui.py:917
+msgid "Monitors"
+msgstr "ಮോണಿಟರ್‌ಗಳು"
+
+#: gui.py:924
+msgid "Signal"
+msgstr "ಸಂकेत"
+
+#: gui.py:941
+msgid "Add Monitor(s)"
+msgstr "ಮುನ್ಸೂಚಕ(ಗಳನ್ನು) ಸೇರಿಸು"
+
+#: gui.py:942
+msgid "Zap All"
+msgstr "ಎಲ್ಲವನ್ನೂ ಅಳಿಸು"
+
+msgid ""
+"How to Use the Logic Simulator GUI\n"
+"\n"
+"---\n"
+"\n"
+"**Keybinds**\n"
+"- **F1:** Show this Help window\n"
+"- **Alt+F4:** Exit the application\n"
+"- **Spacebar:** Run/Pause the simulation\n"
+"\n"
+"**Simulation Controls**\n"
+"- **Number of Cycles:** Set how many cycles to run the simulation for.\n"
+"- **▶ Run Simulation:** Start the simulation for the chosen number of cycles.\n"
+"- **❚❚ Pause:** Pause the simulation at any time.\n"
+"- **■ Reset:** Reset the simulation and clear all monitor data.\n"
+"- **Speed:** Click to cycle through simulation speeds (x0.5, x1, x2, x4, x8).\n"
+"\n"
+"**Switch Controls**\n"
+"- Toggle individual switches by clicking the switch in the list.\n"
+"- Use **All On** or **All Off** to set all switches high or low.\n"
+"\n"
+"**Monitors**\n"
+"- Add a monitor to track a signal by clicking **Add Monitor** and selecting a signal.\n"
+"- Use **Add All** in the dialog to monitor all available signals.\n"
+"- Remove a monitor by clicking the ✕ button next to it, or **Zap All** to remove all monitors.\n"
+"- The monitor list shows the current state of each monitored signal.\n"
+"\n"
+"**Signal Display Canvas**\n"
+"- The main area shows waveforms for all monitored signals.\n"
+"- **Pan:** Click and drag to move the view.\n"
+"- **Zoom:** Use the mouse wheel to zoom in/out.\n"
+"- Signal colors match the color bars in the monitor list.\n"
+"\n"
+"**Themes**\n"
+"- Switch between Light and Dark mode from the Theme menu.\n"
+"\n"
+"**Status Bar**\n"
+"- The status bar at the bottom shows helpful messages and feedback.\n"
+"\n"
+"For more help, see the project documentation or contact the authors."
+msgstr""
+"ಲಾಗಿಕ್ ಸಿಮ್ಯುಲೇಟರ್ GUI ಅನ್ನು ಹೇಗೆ ಬಳಸುವುದು\n"
+"\n"
+"---\n"
+"\n"
+"**ಕುಂಜಿಪುಟ ಸಂಯೋಜನೆಗಳು**\n"
+"- **F1:** ಸಹಾಯ ವಿಂಡೋವನ್ನು ತೋರಿಸಿ\n"
+"- **Alt+F4:** ಅನ್ವಯವನ್ನು ಮುಚ್ಚಿ\n"
+"- **ಸ್ಪೇಸ್‌ಬಾರ್:** ಸಿಮ್ಯುಲೇಶನ್‌ನ್ನು ಚಾಲನೆ/ವಿರಮಿಸಿ\n"
+"\n"
+"**ಸಿಮ್ಯುಲೇಶನ್ ನಿಯಂತ್ರಣಗಳು**\n"
+"- **ಸೈಕಲ್‌ಗಳ ಸಂಖ್ಯೆ:** ಎಷ್ಟು ಸೈಕಲ್‌ಗಳಿಗೆ ಸಿಮ್ಯುಲೇಶನ್‌ ನಡಿಸಬೇಕು ಎಂದು ಹೊಂದಿಸಿ.\n"
+"- **▶ ಸಿಮ್ಯುಲೇಶನ್‌ ಪ್ರಾರಂಭಿಸಿ:** ಆಯ್ಕೆಮಾಡಿದ ಸೈಕಲ್‌ಗಳಿಗಾಗಿಯೇ ಸಿಮ್ಯುಲೇಶನ್ ಪ್ರಾರಂಭಿಸಿ.\n"
+"- **❚❚ ವಿರಾಮ:** ಯಾವುದೇ ಸಮಯದಲ್ಲಾದರೂ ಸಿಮ್ಯುಲೇಶನ್‌ ನಿಲ್ಲಿಸಿ.\n"
+"- **■ ಮರುಹೊಂದಿಸಿ:** ಸಿಮ್ಯುಲೇಶನ್ ಅನ್ನು ಮರುಹೊಂದಿಸಿ ಮತ್ತು ಎಲ್ಲಾ ಮಾನಿಟರ್ ಡೇಟಾವನ್ನು ಅಳಿಸಿ.\n"
+"- **ವೇಗ:** ಸಿಮ್ಯುಲೇಶನ್ ವೇಗಗಳನ್ನು (x0.5, x1, x2, x4, x8) ಪರಿವರ್ತಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ.\n"
+"\n"
+"**ಸ್ವಿಚ್ ನಿಯಂತ್ರಣಗಳು**\n"
+"- ಪಟ್ಟಿ ಉಲ್ಲೇಖಿತ ಸ್ವಿಚ್‌ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡುವ ಮೂಲಕ ಪ್ರತ್ಯೇಕ ಸ್ವಿಚ್‌ಗಳನ್ನು ಟೋಗಲ್ ಮಾಡಿ.\n"
+"- **ಎಲ್ಲಾ ಆನ್** ಅಥವಾ **ಎಲ್ಲಾ ಆಫ್** ಅನ್ನು ಬಳಸುವ ಮೂಲಕ ಎಲ್ಲಾ ಸ್ವಿಚ್‌ಗಳನ್ನು ಉನ್ನತ ಅಥವಾ ತಗ್ಗಿದ ಸ್ಥಿತಿಗೆ ಹೊಂದಿಸಿ.\n"
+"\n"
+"**ಮಾನಿಟರ್‌ಗಳು**\n"
+"- **ಮಾನಿಟರ್‌ ಸೇರಿಸಿ** ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಒಂದು ಸಿಗ್ನಲ್ ಆಯ್ಕೆಮಾಡುವ ಮೂಲಕ ಮಾನಿಟರ್ ಸೇರಿಸಿ.\n"
+"- ಡೈಲಾಗ್‌ನಲ್ಲಿರುವ **ಎಲ್ಲವೂ ಸೇರಿಸಿ** ಬಳಸಿ ಎಲ್ಲಾ ಲಭ್ಯವಿರುವ ಸಿಗ್ನಲ್‌ಗಳನ್ನು ಮಾನಿಟರ್ ಮಾಡಿ.\n"
+"- ಮಾನಿಟರ್‌ ಪಕ್ಕದ ✕ ಗುಂಡಿಗೆ ಕ್ಲಿಕ್ ಮಾಡುವ ಮೂಲಕ ಅಥವಾ **ಎಲ್ಲವೂ ಅಳಿಸಿ** ಬಳಸುವ ಮೂಲಕ ಎಲ್ಲಾ ಮಾನಿಟರ್‌ಗಳನ್ನು ಅಳಿಸಿ.\n"
+"- ಮಾನಿಟರ್ ಪಟ್ಟಿ ಪ್ರತಿ ಮಾನಿಟರ್ ಮಾಡಿದ ಸಿಗ್ನಲ್‌ನ ಪ್ರಸ್ತುತ ಸ್ಥಿತಿಯನ್ನು ತೋರಿಸುತ್ತದೆ.\n"
+"\n"
+"**ಸಿಗ್ನಲ್ ಪ್ರದರ್ಶನ ಕ್ಯಾಂವಾಸ್**\n"
+"- ಮುಖ್ಯ ಪ್ರದೇಶವು ಎಲ್ಲಾ ಮಾನಿಟರ್ ಮಾಡಲಾದ ಸಿಗ್ನಲ್‌ಗಳ ವೇವ್‌ಫಾರ್ಮ್‌ಗಳನ್ನು ತೋರಿಸುತ್ತದೆ.\n"
+"- **ಪ್ಯಾನ್:** ದೃಶ್ಯವನ್ನು ಸರಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಎಳೆಯಿರಿ.\n"
+"- **ಜೂಮ್:** ಮೌಸ್ ವೀಲ್ ಬಳಸಿಕೊಂಡು ನಿಖರವಾಗಿ ಅಥವಾ ದೂರವಾಗಿ ವೀಕ್ಷಿಸಿ.\n"
+"- ಸಿಗ್ನಲ್ ಬಣ್ಣಗಳು ಮಾನಿಟರ್ ಪಟ್ಟಿಯಲ್ಲಿನ ಬಣ್ಣ ಪಟ್ಟಿಗಳನ್ನು ಹೊಂದಿಕೆಯಾಗಿವೆ.\n"
+"\n"
+"**ಥೀಮ್‌ಗಳು**\n"
+"- ಥೀಮ್ ಮೆನುವಿಂದ ಲೈಟ್ ಮತ್ತು ಡಾರ್ಕ್ ಮೋಡ್ ನಡುವೆ ಬದಲಾಯಿಸಿ.\n"
+"\n"
+"**ಸ್ಥಿತಿ ಪಟ್ಟೆ**\n"
+"- ಕೆಳಗಿನ ಸ್ಥಿತಿ ಪಟ್ಟೆ ಸಹಾಯಕ ಸಂದೇಶಗಳು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ತೋರಿಸುತ್ತದೆ.\n"
+"\n"
+"ಹೆಚ್ಚು ಸಹಾಯಕ್ಕಾಗಿ, ಯೋಜನೆಯ ಡಾಕ್ಯುಮೆಂಟೇಶನ್ ಅನ್ನು ನೋಡಿ ಅಥವಾ ಲೇಖಕರನ್ನು ಸಂಪರ್ಕಿಸಿ."
+
+# gui.py: 1081
+msgid "Help: How to Use the Logic Simulator"
+msgstr "ಸಹಾಯ: ತಾರ್ಕಿಕ ಅನುಕರಕವನ್ನು ಹೇಗೆ ಬಳಸುವುದು"
+
+msgid "Logic Simulator\nCreated by:\nAyoife Dada\nNarmeephan Arunthavarajah\nRaghavendra Narayan Rao\n2025"
+msgstr "ತಾರ್ಕಿಕ ಅನುಕರಕ\nರಚಿಸಿದವರು:\nಅಯೋಫೆ ದಡಾ\nನರ್ಮೀಪನ್ ಅರುಂದವರಾಜಾ\nರಾಘವೇಂದ್ರ ನರಾಯಣ ರಾವ್\n2025"
+
+msgid "About Logsim"
+msgstr "Logsim ಬಗ್ಗೆ"
+
+#: gui.py:1092
+msgid "Simulation already running"
+msgstr "ಅನುಕರಣ ಈಗಾಗಲೇ ನಡೆಯುತ್ತಿದೆ"
+
+#: gui.py:1097
+msgid "Simulation stopped"
+msgstr "ಅನುಕರಣ ನಿಲ್ಲಿಸಲಾಗಿದೆ"
+
+#: gui.py:1102 gui.py:1146
+msgid "Simulation reset"
+msgstr "ಅನುಕರಣ ಮರುಹೊಂದಿಸಲಾಗಿದೆ"
+
+#: gui.py:1158
+msgid "Simulation completed"
+msgstr "ಅನುಕರಣ ಪೂರ್ಣಗೊಂಡಿದೆ"
+
+#: gui.py:1161
+msgid "Simulation error occurred"
+msgstr "ಅನುಕರಣ ದೋಷ ಸಂಭವಿಸಿದೆ"
+
+msgid "Running simulation for {num_cycles} cycles..."
+msgstr "{num_cycles} ಚಕ್ರಗಳ ಅನುಕರಣ ನಡೆಯುತ್ತಿದೆ..."
+
+#: gui.py:1172
+msgid "Error during simulation: {str(e)}"
+msgstr "ಅನುಕರಣದ ವೇಳೆ ದೋಷ: {str(e)}"
+
+#: gui.py:1173
+msgid "Simulation Error"
+msgstr "ಅನುಕರಣ ದೋಷ"
+
+#: gui.py:1284
+#, python-brace-format
+msgid "Zapped monitor for {signal_name}"
+msgstr "{signal_name} ಸಂಕೆತದ ಮುನ್ಸೂಚಕ ಅಳಿಸಲಾಗಿದೆ"
+
+#: gui.py:1286
+#, python-brace-format
+msgid "Failed to zap monitor {signal_name}"
+msgstr "{signal_name} ಮುನ್ಸೂಚಕ ಅಳಿಸಲು ವಿಫಲವಾಯಿತು"
+
+#: gui.py:1287 gui.py:1394 gui.py:1406 gui.py:1431 gui.py:1510 gui.py:1525
+msgid "Error"
+msgstr "ದೋಷ"
+
+#: gui.py:1330
+msgid "No more signals available to monitor"
+msgstr "ಮುನ್ಸೂಚಿಸಲು ಇನ್ನಷ್ಟು ಸಂಕೆತಗಳಿಲ್ಲ"
+
+#: gui.py:1330
+msgid "Information"
+msgstr "ಮಾಹಿತಿ"
+
+#: gui.py:1390
+#, python-brace-format
+msgid "Added monitor for {signal_name}"
+msgstr "{signal_name} ಸಂಕೆತಕ್ಕೆ ಮುನ್ಸೂಚಕ ಸೇರಿಸಲಾಗಿದೆ"
+
+#: gui.py:1393
+#, python-brace-format
+msgid "Failed to add monitor for {signal_name}"
+msgstr "{signal_name} ಮುನ್ಸೂಚಕ ಸೇರಿಸಲು ವಿಫಲವಾಯಿತು"
+
+#: gui.py:1405
+msgid "No signals available to monitor"
+msgstr "ಮುನ್ಸೂಚಿಸಲು ಸಂಕೆತಗಳಿಲ್ಲ"
+
+#: gui.py:1413
+msgid "Add all {len(non_monitored)} available signals?"
+msgstr "ಎಲ್ಲಾ ಲಭ್ಯವಿರುವ {len(non_monitored)} ಸಂಕೆತಗಳನ್ನು ಸೇರಿಸುವುದೆ?"
+
+#: gui.py:1414
+msgid "Confirm Add All"
+msgstr "ಎಲ್ಲವನ್ನೂ ಸೇರಿಸುವುದನ್ನು ಖಚಿತಪಡಿಸಿ"
+
+msgid "Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "{switch_name} ಅನ್ನು {'ಹೈ' if new_state == parent.devices.HIGH else 'ಲೋ'} ಗೆ ತಿರುಗಿಸಲಾಗಿದೆ"
+
+msgid "[Activated] Toggled {switch_name} to {'HIGH' if new_state == parent.devices.HIGH else 'LOW'}"
+msgstr "[ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ] {switch_name} ಅನ್ನು {'ಹೈ' if new_state == parent.devices.HIGH else 'ಲೋ'} ಗೆ ತಿರುಗಿಸಲಾಗಿದೆ"
+
+#: gui.py:1422
+#, python-brace-format
+msgid "Added {success_count} monitors"
+msgstr "{success_count} ಮುನ್ಸೂಚಕಗಳನ್ನು ಸೇರಿಸಲಾಗಿದೆ"
+
+#: gui.py:1430
+msgid "No monitors to zap"
+msgstr "ಅಳಿಸಲು ಯಾವುದೇ ಮುನ್ಸೂಚಕಗಳಿಲ್ಲ"
+
+#: gui.py:1438
+msgid "Are you sure you want to zap all monitors?"
+msgstr "ನೀವು ಖಚಿತವಾಗಿಯೂ ಎಲ್ಲಾ ಮುನ್ಸೂಚಕಗಳನ್ನು ಅಳಿಸಲು ಇಚ್ಛಿಸುತ್ತೀರಾ?"
+
+#: gui.py:1439
+msgid "Confirm Zap All"
+msgstr "ಎಲ್ಲವನ್ನೂ ಅಳಿಸುವುದನ್ನು ಖಚಿತಪಡಿಸಿ"
+
+#: gui.py:1451
+#, python-brace-format
+msgid "Zapped all {monitor_count} monitors"
+msgstr "ಎಲ್ಲಾ {monitor_count} ಮುನ್ಸೂಚಕಗಳನ್ನು ಅಳಿಸಲಾಗಿದೆ"
+
+#: gui.py:1509 gui.py:1524
+msgid "Error: Network oscillating"
+msgstr "ದೋಷ: ನೆಟ್‌ವರ್ಕ್ ಕಂಪಿತವಾಗುತ್ತಿದೆ"
+
+#: gui.py:1513
+msgid "All switches set to ON"
+msgstr "ಎಲ್ಲಾ ಸ್ವಿಚ್‌ಗಳನ್ನು ಓನ್‌ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ"
+
+#: gui.py:1528
+msgid "All switches set to OFF"
+msgstr "ಎಲ್ಲಾ ಸ್ವಿಚ್‌ಗಳನ್ನು ಆಫ್‌ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ"
+
+#: gui.py:1643
+msgid "Switched to Light Mode"
+msgstr "ಲೈಟ್ ಮೋಡ್‌ಗೆ ಬದಲಾಗಿದೆ"
+
+#: gui.py:1649
+msgid "Switched to Dark Mode"
+msgstr "ಡಾರ್ಕ್ ಮೋಡ್‌ಗೆ ಬದಲಾಗಿದೆ"
+
+msgid "Light Mode"
+msgstr "ಲೈಟ್ ಮೋಡ್"
+
+msgid "Dark Mode"
+msgstr "ಡಾರ್ಕ್ ಮೋಡ್"
+
+msgid "&Theme"
+msgstr "&ಥೀಮ್"
+
+
+msgid "Signal:"
+msgstr "ಸಂकेत:"
+
+msgid "Add All"
+msgstr "ಎಲ್ಲಾ ಸೇರಿಸಿ"
+
+msgid "Cancel"
+msgstr "ರದ್ದು ಮಾಡಿ"
+
+msgid "Add Monitor"
+msgstr "ಮೋನಿಟರ್ ಸೇರಿಸಿ"
+
+msgid "Add"
+msgstr "ಸೇರಿಸಿ"
+
+msgid "Toggle Selected"
+msgstr "ತೇರುವ ಆಯ್ಕೆ"
+
+msgid "∞ Continuous"
+msgstr "∞ ನಿರಂತರ"
+
+msgid "Add all {x} available signals?"
+msgstr "ಎಲ್ಲಾ {x} ಲಭ್ಯವಿರುವ ಸಂಕೇತಗಳನ್ನು ಸೇರಿಸುವುದೆ?"
+
+msgid "HIGH"
+msgstr "ಹೈ"
+
+msgid "LOW"
+msgstr "ಲೋ"
+
+msgid "Toggled {switch_name} to {new_state}"
+msgstr "{switch_name} ಅನ್ನು {new_state} ಗೆ ತಿರುಗಿಸಲಾಗಿದೆ"
