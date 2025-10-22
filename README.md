@@ -16,8 +16,10 @@ A Python-based digital logic circuit simulator supporting both command-line and 
 ---
 
 ## Project Overview
+
 This project is a logic simulation program written in Python 3. It covers all major phases of the software engineering life cycle: specification, design, implementation, testing, and maintenance. The simulator can parse user-supplied circuit definition files, build the corresponding logic network, and simulate its behavior. Both command-line and graphical interfaces are provided for user interaction.
 Read the reports in this repo for a detailed specification of our custom programming language
+
 ---
 
 ## Key Files & Structure
